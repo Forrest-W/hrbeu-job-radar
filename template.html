@@ -1,0 +1,677 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>哈工程秋招雷达</title>
+  <style>
+    :root {
+      --paper: #f2f0e9;
+      --paper-2: #e8e4d8;
+      --ink: #14241d;
+      --muted: #657169;
+      --line: #cbc9bd;
+      --green: #0d5c45;
+      --green-2: #16755a;
+      --lime: #d9ff78;
+      --orange: #ef7f45;
+      --red: #b7493a;
+      --white: #fffefa;
+      --shadow: 0 18px 55px rgba(19, 49, 38, .10);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; min-width: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 90% 2%, rgba(217,255,120,.32), transparent 24rem),
+        linear-gradient(90deg, rgba(20,36,29,.035) 1px, transparent 1px),
+        linear-gradient(rgba(20,36,29,.035) 1px, transparent 1px),
+        var(--paper);
+      background-size: auto, 32px 32px, 32px 32px, auto;
+      font-family: Inter, "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    button, input, select { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; }
+    .app { width: min(1480px, calc(100% - clamp(20px, 3vw, 64px))); margin: 20px auto 56px; }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: #f8f8f1;
+      background: var(--green);
+      border-radius: 30px;
+      padding: 30px 34px 26px;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      top: -180px;
+      border: 54px solid rgba(217,255,120,.17);
+      border-radius: 50%;
+    }
+    .eyebrow { margin: 0 0 9px; letter-spacing: .12em; color: var(--lime); font-size: 12px; font-weight: 800; }
+    .hero-row { display: flex; justify-content: space-between; align-items: end; gap: 24px; position: relative; z-index: 1; }
+    .hero-row > *, .toolbar > * { min-width: 0; }
+    h1 { margin: 0; font-size: clamp(32px, 4vw, 58px); letter-spacing: -.055em; line-height: .98; font-weight: 850; }
+    .hero-copy { max-width: 700px; margin: 16px 0 0; color: rgba(255,255,255,.74); line-height: 1.7; font-size: 14px; }
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+    .btn {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--ink);
+      border-radius: 999px;
+      min-height: 42px;
+      padding: 0 17px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      text-decoration: none;
+      font-weight: 750;
+      transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+    }
+    .btn:hover { transform: translateY(-1px); box-shadow: 0 8px 22px rgba(20,36,29,.10); }
+    .btn:focus-visible, input:focus-visible, select:focus-visible { outline: 3px solid rgba(239,127,69,.35); outline-offset: 2px; }
+    .btn-dark { border-color: rgba(255,255,255,.2); background: var(--lime); color: #11382a; }
+    .btn-ghost { border-color: rgba(255,255,255,.32); color: #fff; background: rgba(255,255,255,.08); }
+    .btn-sm { min-height: 34px; padding: 0 12px; font-size: 13px; }
+    .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 26px; position: relative; z-index: 1; }
+    .stat { border-top: 1px solid rgba(255,255,255,.18); padding-top: 15px; }
+    .stat b { display: block; font-size: 27px; line-height: 1; color: #fff; letter-spacing: -.04em; }
+    .stat span { display: block; color: rgba(255,255,255,.58); margin-top: 7px; font-size: 12px; }
+    .workspace { display: block; margin-top: 18px; }
+    .panel {
+      background: rgba(255,254,250,.88);
+      border: 1px solid rgba(20,36,29,.12);
+      border-radius: var(--radius);
+      box-shadow: 0 11px 35px rgba(20,36,29,.06);
+    }
+    .sidebar {
+      position: fixed; z-index: 60; inset: 0 0 0 auto; width: min(390px, calc(100vw - 18px));
+      height: 100dvh; overflow-y: auto; padding: 26px 24px 32px; border-radius: 26px 0 0 26px;
+      background: var(--white); box-shadow: -20px 0 70px rgba(20,36,29,.22);
+      transform: translateX(105%); transition: transform .25s ease; overscroll-behavior: contain;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .drawer-scrim { display: none; position: fixed; z-index: 55; inset: 0; border: 0; background: rgba(11,35,27,.48); cursor: pointer; }
+    .drawer-scrim.open { display: block; }
+    .drawer-close { border: 1px solid var(--line); background: transparent; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; flex: none; }
+    body.drawer-open { overflow: hidden; }
+    .section-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; }
+    .section-head h2, .section-head h3 { margin: 0; letter-spacing: -.025em; }
+    .section-head h2 { font-size: 20px; }
+    .section-head h3 { font-size: 16px; }
+    .profile-note, .hint { color: var(--muted); font-size: 12px; line-height: 1.65; }
+    .profile-note { margin: 8px 0 18px; }
+    .track-picker { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 0 0 17px; }
+    .track-btn { border: 1px solid var(--line); border-radius: 11px; background: #fff; color: var(--muted); padding: 9px 6px; cursor: pointer; font-size: 11px; font-weight: 800; line-height: 1.25; }
+    .track-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+    .field { display: grid; gap: 7px; margin: 14px 0; }
+    .field label { font-weight: 760; font-size: 12px; }
+    input, select {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      color: var(--ink);
+      padding: 0 12px;
+    }
+    .multi-select { position: relative; min-width: 0; }
+    .multi-trigger {
+      width: 100%; min-height: 42px; border: 1px solid var(--line); border-radius: 12px;
+      background: #fff; color: var(--ink); padding: 0 12px; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between; gap: 9px;
+      text-align: left;
+    }
+    .multi-trigger span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .multi-trigger i { font-style: normal; color: var(--muted); transition: transform .15s ease; }
+    .multi-select.open .multi-trigger { border-color: var(--orange); box-shadow: 0 0 0 3px rgba(239,127,69,.18); }
+    .multi-select.open .multi-trigger i { transform: rotate(180deg); }
+    .multi-menu {
+      display: none; position: absolute; z-index: 30; top: calc(100% + 7px); left: 0;
+      width: min(270px, calc(100vw - 36px)); max-height: 350px; overflow: auto;
+      padding: 8px; background: var(--white); border: 1px solid var(--line); border-radius: 14px;
+      box-shadow: 0 18px 48px rgba(20,36,29,.18);
+    }
+    .multi-select.open .multi-menu { display: block; }
+    .multi-option { display: flex; align-items: center; gap: 9px; padding: 8px 9px; border-radius: 9px; cursor: pointer; font-size: 13px; }
+    .multi-option:hover { background: var(--paper); }
+    .multi-option input { width: 17px; min-height: auto; height: 17px; padding: 0; accent-color: var(--green); flex: none; }
+    .multi-clear { width: 100%; border: 0; border-top: 1px solid var(--line); margin-top: 5px; padding: 9px 6px 3px; background: transparent; color: var(--green); cursor: pointer; font-weight: 750; }
+    .range-row { display: flex; align-items: center; gap: 12px; }
+    input[type="range"] { accent-color: var(--green); padding: 0; min-height: auto; }
+    .range-value { min-width: 42px; font-weight: 850; color: var(--green); text-align: right; }
+    .sidebar .btn { width: 100%; margin-top: 4px; }
+    .legend { margin-top: 20px; padding-top: 16px; border-top: 1px solid var(--line); display: grid; gap: 9px; }
+    .legend-row { display: flex; gap: 9px; align-items: flex-start; font-size: 12px; color: var(--muted); line-height: 1.45; }
+    .dot { width: 9px; height: 9px; border-radius: 50%; flex: none; margin-top: 4px; background: var(--green); }
+    .dot.orange { background: var(--orange); }
+    .dot.gray { background: #9ea49f; }
+    .main-panel { padding: clamp(12px, 1.5vw, 18px); min-width: 0; overflow: clip; }
+    .toolbar { display: grid; grid-template-columns: minmax(180px, 1.6fr) repeat(3, minmax(0,.65fr)); gap: 10px; }
+    .search-wrap { position: relative; }
+    .search-wrap input { padding-left: 42px; }
+    .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 16px; }
+    .subtoolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 13px 2px 16px; }
+    .quick-filters, .view-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      padding: 7px 11px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .chip.active { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .result-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; padding: 6px 2px 14px; flex-wrap: wrap; }
+    .result-meta strong { font-size: 19px; letter-spacing: -.02em; }
+    .result-meta span { color: var(--muted); font-size: 12px; }
+    .event-list { display: grid; gap: 10px; }
+    .date-divider { display: flex; align-items: center; gap: 11px; margin: 16px 2px 5px; color: var(--muted); font-size: 12px; font-weight: 800; }
+    .date-divider::after { content: ""; height: 1px; background: var(--line); flex: 1; }
+    .event-card {
+      display: grid;
+      grid-template-columns: 72px minmax(0,1.9fr) minmax(0,.86fr) minmax(0,.62fr) minmax(0,1.05fr) minmax(0,.82fr) max-content;
+      gap: clamp(8px, 1vw, 15px);
+      align-items: center;
+      border: 1px solid rgba(20,36,29,.12);
+      border-radius: 18px;
+      padding: 15px;
+      background: rgba(255,255,255,.62);
+      transition: transform .16s ease, border-color .16s ease, background .16s ease;
+    }
+    .event-card:hover { transform: translateY(-2px); border-color: rgba(13,92,69,.38); background: #fff; }
+    .event-card > * { min-width: 0; }
+    .date-box { border-right: 1px solid var(--line); padding-right: clamp(8px, 1vw, 15px); }
+    .date-box b { display: block; font-size: 25px; line-height: 1; letter-spacing: -.05em; }
+    .date-box span { display: block; color: var(--muted); margin-top: 5px; font-size: 12px; }
+    .event-main { min-width: 0; }
+    .event-main h3 { margin: 0; font-size: 16px; line-height: 1.45; letter-spacing: -.018em; }
+    .event-main p { margin: 5px 0 0; color: var(--muted); font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .badges { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 9px; }
+    .badge { display: inline-flex; align-items: center; min-height: 24px; padding: 0 8px; border-radius: 999px; background: var(--paper-2); color: #536059; font-size: 11px; font-weight: 760; }
+    .badge.type { background: #dfeee8; color: var(--green); }
+    .badge.online { background: #fce5d9; color: #9b482d; }
+    .cell-label { display: block; color: var(--muted); font-size: 10px; text-transform: uppercase; letter-spacing: .1em; margin-bottom: 5px; }
+    .place, .city, .salary { min-width: 0; font-size: 13px; line-height: 1.45; }
+    .place strong, .city strong, .salary strong { display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .city small, .salary small { color: var(--muted); display: block; }
+    .fit { display: grid; gap: 6px; }
+    .fit-top { display: flex; align-items: baseline; justify-content: space-between; gap: 7px; }
+    .fit-top b { font-size: 20px; color: var(--green); letter-spacing: -.04em; }
+    .fit-top span { font-size: 11px; color: var(--muted); }
+    .fit-pair { display: flex; justify-content: space-between; gap: 5px; color: var(--muted); font-size: 10px; white-space: nowrap; }
+    .fit-pair b { color: var(--ink); font-size: 11px; }
+    .fit-bar { height: 6px; border-radius: 999px; overflow: hidden; background: #e4e2da; }
+    .fit-bar i { display: block; height: 100%; border-radius: inherit; background: var(--green); }
+    .card-actions { display: grid; gap: 7px; }
+    .favorite { color: var(--muted); }
+    .favorite.active { color: #936a00; background: #fff3bd; border-color: #e8cd67; }
+    .empty { text-align: center; padding: 70px 20px; color: var(--muted); }
+    .empty b { display: block; color: var(--ink); font-size: 20px; margin-bottom: 8px; }
+    .load-more { margin: 18px auto 2px; display: flex; }
+    dialog { width: min(680px, calc(100% - 28px)); border: 0; border-radius: 24px; padding: 0; color: var(--ink); background: var(--white); box-shadow: 0 30px 100px rgba(11,35,27,.30); }
+    dialog::backdrop { background: rgba(10,28,22,.57); backdrop-filter: blur(3px); }
+    .dialog-body { padding: 25px; }
+    .dialog-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+    .dialog-head h2 { margin: 4px 0 0; font-size: 23px; line-height: 1.35; letter-spacing: -.03em; }
+    .icon-btn { border: 1px solid var(--line); background: transparent; border-radius: 50%; width: 38px; height: 38px; cursor: pointer; flex: none; }
+    .detail-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; margin: 20px 0; }
+    .detail-item { padding: 13px; background: var(--paper); border-radius: 14px; }
+    .detail-item span { display: block; color: var(--muted); font-size: 11px; margin-bottom: 5px; }
+    .detail-item b { font-size: 14px; }
+    .review-box { border-left: 4px solid var(--orange); padding: 4px 0 4px 15px; margin: 18px 0; line-height: 1.65; }
+    .review-box h3 { margin: 0 0 6px; font-size: 15px; }
+    .review-box p { margin: 0; color: #4f5b55; font-size: 13px; }
+    .review-box p + p { margin-top: 7px; }
+    .reason-list { margin: 9px 0 0; padding-left: 20px; color: #4f5b55; font-size: 13px; line-height: 1.7; }
+    .dialog-actions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 18px; }
+    .footer { display: flex; justify-content: space-between; gap: 18px; color: var(--muted); font-size: 11px; line-height: 1.6; margin: 17px 6px 0; }
+    @media (max-width: 1100px) {
+      .toolbar { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .search-wrap { grid-column: 1 / -1; }
+      .event-card { grid-template-columns: 68px minmax(0,1.65fr) minmax(0,.8fr) minmax(0,.75fr) minmax(0,.8fr) max-content; }
+      .event-card .salary { display: none; }
+    }
+    @media (max-width: 760px) {
+      .app { width: min(calc(100% - 18px), 760px); margin-top: 9px; }
+      .hero { padding: 24px 21px; border-radius: 23px; }
+      .hero-row { align-items: flex-start; flex-direction: column; }
+      .hero-actions { justify-content: flex-start; width: 100%; }
+      .stats { grid-template-columns: repeat(2,1fr); }
+      .workspace { margin-top: 10px; }
+      .main-panel { padding: 12px; }
+      .toolbar { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .search-wrap { grid-column: 1 / -1; }
+      .event-card { grid-template-columns: 64px 1fr; gap: 11px 13px; align-items: start; }
+      .date-box { grid-column: 1; grid-row: 1; }
+      .event-main { grid-column: 2; grid-row: 1; }
+      .place, .city, .salary { display: block !important; padding-left: 0; grid-column: 1 / -1; }
+      .fit { grid-column: 1 / -1; padding-left: 0; }
+      .card-actions { grid-column: 1 / -1; display: flex; justify-content: flex-end; }
+      .event-main p { white-space: normal; }
+      .footer { flex-direction: column; }
+    }
+    @media (max-width: 470px) {
+      .toolbar { grid-template-columns: 1fr; }
+      .search-wrap { grid-column: auto; }
+      .quick-filters { width: 100%; overflow-x: auto; flex-wrap: nowrap; padding-bottom: 3px; }
+      .chip { white-space: nowrap; }
+      .hero-actions { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .hero-actions .btn { padding-inline: 10px; font-size: 12px; }
+      .hero-actions .btn:last-child { grid-column: 1 / -1; }
+      .event-card { grid-template-columns: 54px 1fr; padding: 13px; }
+      .date-box { padding-right: 10px; }
+      .date-box b { font-size: 21px; }
+      .place, .city, .salary, .fit { padding-left: 0; }
+      .detail-grid { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: #fff; }
+      .app { width: 100%; margin: 0; }
+      .hero { box-shadow: none; border-radius: 0; }
+      .sidebar, .drawer-scrim, .toolbar, .subtoolbar, .card-actions, .load-more, .hero-actions { display: none !important; }
+      .workspace { display: block; }
+      .panel { border: 0; box-shadow: none; }
+      .event-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="hero">
+      <div class="hero-row">
+        <div>
+          <p class="eyebrow">HEU JOB RADAR · 2027 秋招</p>
+          <h1>把宣讲会排成<br>你的求职优先级</h1>
+          <p class="hero-copy">汇总哈工程就业网公开的宣讲会与双选会，按城市、方向和个人偏好筛选。适配分用于减少信息噪音，不替代你对 JD 和部门的判断。</p>
+        </div>
+        <div class="hero-actions">
+          <button class="btn btn-ghost" id="mobileProfileBtn" aria-controls="profilePanel" aria-expanded="false">我的求职画像</button>
+          <button class="btn btn-ghost" id="updateBtn">增量更新</button>
+          <button class="btn btn-ghost" id="exportBtn">导出筛选结果</button>
+          <a class="btn btn-dark" href="https://job.hrbeu.edu.cn/" target="_blank" rel="noreferrer">打开学校就业网 ↗</a>
+        </div>
+      </div>
+      <div class="stats" aria-label="活动统计">
+        <div class="stat"><b id="statAll">0</b><span>未来活动</span></div>
+        <div class="stat"><b id="statWeek">0</b><span>未来 7 天</span></div>
+        <div class="stat"><b id="statFit">0</b><span id="statFitLabel">双方向高适配</span></div>
+        <div class="stat"><b id="statCompanies">0</b><span>企业 / 组织</span></div>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <button class="drawer-scrim" id="drawerScrim" type="button" aria-label="关闭求职画像抽屉"></button>
+      <aside class="panel sidebar" id="profilePanel" aria-hidden="true" inert>
+        <div class="section-head"><h2>我的求职画像</h2><div style="display:flex;align-items:center;gap:8px"><span class="badge type">本地保存</span><button class="drawer-close" id="closeProfileBtn" type="button" aria-label="关闭求职画像">✕</button></div></div>
+        <p class="profile-note">已根据两份简历拆成两条主线。切换方向查看对应适配分；评分只作初筛，不替代岗位 JD。</p>
+        <div class="track-picker" role="group" aria-label="选择求职方向">
+          <button class="track-btn" type="button" data-track="all">双方向</button>
+          <button class="track-btn" type="button" data-track="ic">IC 设计验证</button>
+          <button class="track-btn" type="button" data-track="ai">AI 应用开发</button>
+        </div>
+        <div class="field">
+          <label for="citiesInput">目标城市（逗号分隔）</label>
+          <input id="citiesInput" value="北京,上海,深圳,杭州,南京,武汉,成都,西安,哈尔滨">
+        </div>
+        <div class="field">
+          <label for="keywordsInput">补充关键词（逗号分隔）</label>
+          <input id="keywordsInput" value="芯片,验证,Verilog,AI,Agent,软件,数据,智能">
+        </div>
+        <div class="field">
+          <label for="orgInput">组织偏好</label>
+          <select id="orgInput">
+            <option value="balanced">均衡考虑</option>
+            <option value="tech">技术成长优先</option>
+            <option value="stable">国央企 / 研究所优先</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="minFit">最低适配分</label>
+          <div class="range-row"><input id="minFit" type="range" min="0" max="90" step="5" value="0"><span class="range-value" id="minFitValue">不限</span></div>
+        </div>
+        <button class="btn" id="saveProfileBtn">保存画像并重排</button>
+        <div class="legend">
+          <div class="legend-row"><i class="dot"></i><span><b>75+</b> 优先看：领域和画像有较多交集</span></div>
+          <div class="legend-row"><i class="dot orange"></i><span><b>55–74</b> 值得核实：关键取决于具体岗位/部门</span></div>
+          <div class="legend-row"><i class="dot gray"></i><span><b>&lt;55</b> 低优先：公开标题暂未显示明显交集</span></div>
+        </div>
+      </aside>
+
+      <section class="panel main-panel">
+        <div class="toolbar" aria-label="筛选器">
+          <div class="search-wrap"><span class="search-icon">⌕</span><input id="searchInput" type="search" placeholder="搜索企业、活动、地点…"></div>
+          <div class="multi-select" id="cityFilter" data-all-label="全部城市"><button class="multi-trigger" type="button" aria-expanded="false"><span>全部城市</span><i>⌄</i></button><div class="multi-menu"><div class="multi-options"></div><button class="multi-clear" type="button">清空选择</button></div></div>
+          <div class="multi-select" id="typeFilter" data-all-label="全部类型"><button class="multi-trigger" type="button" aria-expanded="false"><span>全部类型</span><i>⌄</i></button><div class="multi-menu"><div class="multi-options"></div><button class="multi-clear" type="button">清空选择</button></div></div>
+          <div class="multi-select" id="domainFilter" data-all-label="全部方向"><button class="multi-trigger" type="button" aria-expanded="false"><span>全部方向</span><i>⌄</i></button><div class="multi-menu"><div class="multi-options"></div><button class="multi-clear" type="button">清空选择</button></div></div>
+        </div>
+        <div class="subtoolbar">
+          <div class="quick-filters" aria-label="时间范围">
+            <button class="chip active" data-days="all">全部日期</button>
+            <button class="chip" data-days="3">3 天内</button>
+            <button class="chip" data-days="7">7 天内</button>
+            <button class="chip" data-days="30">30 天内</button>
+            <button class="chip" id="favoriteOnly">只看收藏</button>
+          </div>
+          <div class="view-actions"><select id="sortSelect" aria-label="排序"><option value="time">按时间</option><option value="fit">按适配度</option><option value="views">按热度</option></select><button class="btn btn-sm" id="resetBtn">重置筛选</button></div>
+        </div>
+        <div class="result-meta"><strong id="resultCount">0 场活动</strong><span id="dataTime"></span></div>
+        <div class="event-list" id="eventList" aria-live="polite"></div>
+        <button class="btn load-more" id="loadMoreBtn" hidden>再显示 30 条</button>
+      </section>
+    </div>
+    <footer class="footer"><span id="sourceNote"></span><span>建议：先收藏 → 查 JD/部门 → 问清合同与城市 → 再决定是否到场。</span></footer>
+  </main>
+
+  <dialog id="detailDialog">
+    <div class="dialog-body">
+      <div class="dialog-head">
+        <div><span class="badge type" id="detailType"></span><h2 id="detailTitle"></h2></div>
+        <button class="icon-btn" id="closeDialogBtn" aria-label="关闭">✕</button>
+      </div>
+      <div class="detail-grid" id="detailGrid"></div>
+      <div class="review-box"><h3>企业口碑初筛</h3><p id="detailReview"></p><p><b>面试前核实：</b><span id="detailVerify"></span></p></div>
+      <div><b>为什么得到这个适配分</b><ul class="reason-list" id="detailReasons"></ul></div>
+      <p class="hint">提示：薪资优先来自学校公开信息；“网络查询得到”是公开岗位样本，可能与本场活动的岗位、城市或学历要求不同，务必打开来源核验。口碑文字是行业/组织类型的保守归纳，不是匿名网站评分。</p>
+      <div class="dialog-actions" id="detailActions"></div>
+    </div>
+  </dialog>
+
+  <dialog id="updateDialog">
+    <div class="dialog-body">
+      <div class="dialog-head"><div><span class="badge type">增量更新</span><h2>更新招聘数据</h2></div><button class="icon-btn" id="closeUpdateBtn" aria-label="关闭">✕</button></div>
+      <p class="profile-note" id="updateIntro">更新脚本会同步学校公开列表，但只重新处理新增或已变化的记录；未变化活动直接复用本地缓存。完成后回到本页按 Ctrl+R。</p>
+      <div class="detail-grid" id="localUpdateSteps">
+        <div class="detail-item"><span>手动更新</span><b>双击目录里的 refresh.bat</b></div>
+        <div class="detail-item"><span>自动更新</span><b>每天 02:15 运行增量任务</b></div>
+      </div>
+      <div class="dialog-actions" id="localUpdateActions"><a class="btn btn-dark" href="./refresh.bat">打开手动更新脚本 ↗</a><a class="btn btn-sm" href="./schedule_daily_update.ps1">查看定时任务脚本 ↗</a></div>
+      <p class="hint" id="updateHint">由于本页是离线 file:// 页面，浏览器不会直接替你启动 Python；按钮提供脚本入口，运行后刷新页面即可看到最新完整列表。</p>
+    </div>
+  </dialog>
+
+  <script type="application/json" id="eventData">__EVENT_DATA__</script>
+  <script type="application/json" id="metaData">__META_DATA__</script>
+  <script>
+    const rawEvents = document.getElementById('eventData').textContent.trim();
+    const rawMeta = document.getElementById('metaData').textContent.trim();
+    const isSourceTemplate = rawEvents === ['__EVENT', 'DATA__'].join('_');
+    if (isSourceTemplate) window.location.replace('./index.html');
+    const EVENTS = isSourceTemplate ? [] : JSON.parse(rawEvents);
+    const META = rawMeta === ['__META', 'DATA__'].join('_') ? {fetchedAt: new Date().toISOString(), note: '正在打开数据页面…'} : JSON.parse(rawMeta);
+    const $ = (selector, root = document) => root.querySelector(selector);
+    const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
+    const state = { days: 'all', favoriteOnly: false, shown: 30, current: null };
+    const store = {
+      read(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) ?? fallback; } catch { return fallback; } },
+      write(key, value) { localStorage.setItem(key, JSON.stringify(value)); }
+    };
+    let favorites = new Set(store.read('hrbeu-radar-favorites', []));
+    let activeTrack = store.read('hrbeu-radar-track', 'all');
+    if (!['all', 'ic', 'ai'].includes(activeTrack)) activeTrack = 'all';
+    const DEFAULT_KEYWORDS = '芯片,验证,Verilog,AI,Agent,软件,数据,智能';
+    const LEGACY_KEYWORDS = '后端,软件,计算机,数据,云,网络,通信,智能';
+    let profile = store.read('hrbeu-radar-profile', {
+      cities: '北京,上海,深圳,杭州,南京,武汉,成都,西安,哈尔滨',
+      keywords: DEFAULT_KEYWORDS,
+      org: 'balanced'
+    });
+    if (typeof profile.keywords !== 'string' || profile.keywords === LEGACY_KEYWORDS) profile.keywords = DEFAULT_KEYWORDS;
+
+    const esc = value => String(value ?? '').replace(/[&<>'"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[c]));
+    const splitTerms = value => value.split(/[，,、\s]+/).map(x => x.trim()).filter(Boolean);
+    const dateOf = event => new Date(event.start);
+    const today = (() => { const d = new Date(); d.setHours(0,0,0,0); return d; })();
+    const dayDiff = event => Math.floor((dateOf(event) - today) / 86400000);
+    const fmtDate = event => new Intl.DateTimeFormat('zh-CN', {month:'2-digit', day:'2-digit'}).format(dateOf(event));
+    const fmtWeekday = event => new Intl.DateTimeFormat('zh-CN', {weekday:'short'}).format(dateOf(event));
+    const fmtTime = event => new Intl.DateTimeFormat('zh-CN', {hour:'2-digit', minute:'2-digit', hour12:false}).format(dateOf(event));
+    const fmtFull = iso => new Intl.DateTimeFormat('zh-CN', {year:'numeric', month:'long', day:'numeric', weekday:'short', hour:'2-digit', minute:'2-digit', hour12:false}).format(new Date(iso));
+    const dateKey = event => event.start.slice(0,10);
+
+    const TRACK_LABELS = { all: '双方向', ic: 'IC 设计验证', ai: 'AI 应用开发' };
+    function baseTrackFit(event, track) {
+      const fallback = { score: event.baseFit ?? 34, reasons: event.fitReasons ?? [], band: event.fitBand ?? '低优先' };
+      return event.profileFits?.[track] ?? fallback;
+    }
+
+    function scoreTrack(event, track) {
+      const base = baseTrackFit(event, track);
+      let score = base.score;
+      const reasons = [...base.reasons];
+      const cities = splitTerms(profile.cities);
+      const keywords = splitTerms(profile.keywords);
+      const haystack = `${event.company} ${event.title} ${event.domain}`;
+      if (event.city !== '待核验' && cities.includes(event.city)) {
+        score += 12; reasons.push(`命中目标城市：${event.city}`);
+      }
+      const hits = keywords.filter(k => haystack.toLowerCase().includes(k.toLowerCase()));
+      if (hits.length) {
+        score += Math.min(14, hits.length * 4); reasons.push(`命中你的关键词：${hits.slice(0,4).join('、')}`);
+      }
+      const stable = /研究所|研究院|航天|船舶|中船|兵器|国防|中电科|电力/.test(haystack);
+      const tech = /软件|互联网|通信|网络|数据|云|芯|电子|智能/.test(haystack);
+      if (profile.org === 'stable' && stable) { score += 10; reasons.push('命中“国央企 / 研究所优先”'); }
+      if (profile.org === 'tech' && tech) { score += 10; reasons.push('命中“技术成长优先”'); }
+      return { score: Math.max(0, Math.min(99, score)), reasons: [...new Set(reasons)], track };
+    }
+
+    function scoreEvent(event) {
+      const scores = { ic: scoreTrack(event, 'ic'), ai: scoreTrack(event, 'ai') };
+      const selected = activeTrack === 'all'
+        ? (scores.ic.score >= scores.ai.score ? scores.ic : scores.ai)
+        : scores[activeTrack];
+      const reasons = activeTrack === 'all'
+        ? [`综合视图取较高方向：${TRACK_LABELS[selected.track]}`, ...selected.reasons]
+        : selected.reasons;
+      return { ...selected, reasons: [...new Set(reasons)], scores };
+    }
+
+    function selectedValues(id) {
+      return new Set($$(`#${id} input[type="checkbox"]:checked`).map(input => input.value));
+    }
+
+    function getFiltered() {
+      const query = $('#searchInput').value.trim().toLowerCase();
+      const cities = selectedValues('cityFilter');
+      const types = selectedValues('typeFilter');
+      const domains = selectedValues('domainFilter');
+      const minFit = Number($('#minFit').value);
+      let result = EVENTS.map(event => ({...event, personalFit: scoreEvent(event)})).filter(event => {
+        const haystack = `${event.title} ${event.company} ${event.place} ${event.city} ${event.domain}`.toLowerCase();
+        if (query && !haystack.includes(query)) return false;
+        if (cities.size && !cities.has(event.city)) return false;
+        if (types.size && !types.has(event.type)) return false;
+        if (domains.size && !domains.has(event.domain)) return false;
+        if (event.personalFit.score < minFit) return false;
+        if (state.days !== 'all' && (dayDiff(event) < 0 || dayDiff(event) > Number(state.days))) return false;
+        if (state.favoriteOnly && !favorites.has(event.id)) return false;
+        return true;
+      });
+      const sort = $('#sortSelect').value;
+      if (sort === 'fit') result.sort((a,b) => b.personalFit.score - a.personalFit.score || dateOf(a) - dateOf(b));
+      else if (sort === 'views') result.sort((a,b) => b.views - a.views || dateOf(a) - dateOf(b));
+      else result.sort((a,b) => dateOf(a) - dateOf(b));
+      return result;
+    }
+
+    function fitColor(score) { return score >= 75 ? 'var(--green)' : score >= 55 ? 'var(--orange)' : '#9ea49f'; }
+    function fitBarColor(score) { return score >= 75 ? '#8fbe2f' : fitColor(score); }
+    function render() {
+      const filtered = getFiltered();
+      const visible = filtered.slice(0, state.shown);
+      $('#resultCount').textContent = `${filtered.length} 场活动`;
+      $('#loadMoreBtn').hidden = visible.length >= filtered.length;
+      const list = $('#eventList');
+      if (!visible.length) {
+        list.innerHTML = '<div class="empty"><b>没有匹配的活动</b>试试降低适配分、切换城市或清空关键词。</div>';
+        return;
+      }
+      let lastDate = '';
+      list.innerHTML = visible.map(event => {
+        const key = dateKey(event);
+        const divider = key !== lastDate ? `<div class="date-divider">${esc(fmtFull(event.start).replace(/\s\d{2}:\d{2}$/, ''))}</div>` : '';
+        lastDate = key;
+        const fit = event.personalFit.score;
+        const fav = favorites.has(event.id);
+        return `${divider}<article class="event-card" data-id="${esc(event.id)}">
+          <div class="date-box"><b>${esc(fmtDate(event))}</b><span>${esc(fmtWeekday(event))} · ${esc(fmtTime(event))}</span></div>
+          <div class="event-main"><h3>${esc(event.title)}</h3><p>${esc(event.company)}</p><div class="badges"><span class="badge type">${esc(event.type)}</span><span class="badge">${esc(event.domain)}</span>${event.online ? '<span class="badge online">线上</span>' : ''}</div></div>
+          <div class="place"><span class="cell-label">地点</span><strong title="${esc(event.place)}">${esc(event.place)}</strong></div>
+          <div class="city"><span class="cell-label">城市</span><strong>${esc(event.city)}</strong><small>${esc(event.cityBasis)}</small></div>
+          <div class="salary"><span class="cell-label">薪资</span><strong>${esc(event.salary || '未公开')}</strong><small>${esc(event.salaryBasis || '待核验')}</small></div>
+          <div class="fit"><span class="cell-label">${esc(activeTrack === 'all' ? '双方向最高适配' : `${TRACK_LABELS[activeTrack]}适配`)}</span><div class="fit-top"><b style="color:${fitColor(fit)}">${fit}</b><span>${fit >= 75 ? '优先看' : fit >= 55 ? '值得核实' : '低优先'}</span></div><div class="fit-pair"><span>IC <b>${event.personalFit.scores.ic.score}</b></span><span>AI <b>${event.personalFit.scores.ai.score}</b></span></div><div class="fit-bar"><i style="width:${fit}%;background:${fitBarColor(fit)}"></i></div></div>
+          <div class="card-actions"><button class="btn btn-sm favorite ${fav ? 'active' : ''}" data-favorite="${esc(event.id)}">${fav ? '★ 已收藏' : '☆ 收藏'}</button><button class="btn btn-sm" data-detail="${esc(event.id)}">查看判断</button></div>
+        </article>`;
+      }).join('');
+    }
+
+    function fillMultiSelect(id, values) {
+      const container = $('#' + id);
+      $('.multi-options', container).innerHTML = values.map(value => `<label class="multi-option"><input type="checkbox" value="${esc(value)}"><span>${esc(value)}</span></label>`).join('');
+    }
+    function updateMultiLabel(container) {
+      const selected = $$('input[type="checkbox"]:checked', container).map(input => input.value);
+      const label = selected.length === 0 ? container.dataset.allLabel : selected.length === 1 ? selected[0] : `已选 ${selected.length} 项`;
+      $('.multi-trigger span', container).textContent = label;
+    }
+    function populateFilters() {
+      const cities = [...new Set(EVENTS.map(e => e.city))].sort((a,b) => a === '待核验' ? 1 : b === '待核验' ? -1 : a.localeCompare(b, 'zh-CN'));
+      const domains = [...new Set(EVENTS.map(e => e.domain))].sort((a,b) => a.localeCompare(b, 'zh-CN'));
+      fillMultiSelect('cityFilter', cities);
+      fillMultiSelect('typeFilter', ['宣讲会', '双选会']);
+      fillMultiSelect('domainFilter', domains);
+    }
+
+    function updateStats() {
+      const scored = EVENTS.map(event => ({event, fit: scoreEvent(event).score}));
+      $('#statAll').textContent = EVENTS.length;
+      $('#statWeek').textContent = EVENTS.filter(e => dayDiff(e) >= 0 && dayDiff(e) <= 7).length;
+      $('#statFit').textContent = scored.filter(x => x.fit >= 75).length;
+      $('#statFitLabel').textContent = `${TRACK_LABELS[activeTrack]}高适配`;
+      $('#statCompanies').textContent = new Set(EVENTS.map(e => e.company)).size;
+    }
+
+    function showDetail(id) {
+      const event = EVENTS.find(e => e.id === id); if (!event) return;
+      const personal = scoreEvent(event); state.current = event;
+      $('#detailType').textContent = `${event.type} · ${TRACK_LABELS[activeTrack]}适配 ${personal.score}`;
+      $('#detailTitle').textContent = event.title;
+      $('#detailGrid').innerHTML = [
+        ['企业 / 组织', event.company], ['时间', fmtFull(event.start)], ['地点', event.place], ['城市', `${event.city}（${event.cityBasis}）`], ['薪资', `${event.salary || '未公开'}（${event.salaryBasis || '待核验'}）`], ['行业线索', event.domain], ['双方向适配', `IC 设计验证 ${personal.scores.ic.score} · AI 应用开发 ${personal.scores.ai.score}`], ['学校站浏览', `${event.views} 次`]
+      ].map(([k,v]) => `<div class="detail-item"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
+      $('#detailReview').textContent = event.reputation;
+      $('#detailVerify').textContent = event.verify;
+      $('#detailReasons').innerHTML = personal.reasons.map(r => `<li>${esc(r)}</li>`).join('');
+      $('#detailActions').innerHTML = `<a class="btn btn-dark" href="${esc(event.sourceUrl)}" target="_blank" rel="noreferrer">学校详情 ↗</a>${event.salarySourceUrl ? `<a class="btn btn-sm" href="${esc(event.salarySourceUrl)}" target="_blank" rel="noreferrer">${event.salaryBasis === '学校公开信息' ? '学校薪资来源' : '网络薪资查询'} ↗</a>` : ''}${event.citySourceUrl ? `<a class="btn btn-sm" href="${esc(event.citySourceUrl)}" target="_blank" rel="noreferrer">城市网络来源 ↗</a>` : ''}${Object.entries(event.reviewLinks).map(([name,url]) => `<a class="btn btn-sm" href="${esc(url)}" target="_blank" rel="noreferrer">${esc(name)} ↗</a>`).join('')}<button class="btn btn-sm" id="icsBtn">加入日历</button>`;
+      $('#detailDialog').showModal();
+    }
+
+    function download(filename, text, type) {
+      const blob = new Blob(['\ufeff' + text], {type}); const url = URL.createObjectURL(blob);
+      const a = document.createElement('a'); a.href = url; a.download = filename; a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    function exportCsv() {
+      const rows = [['时间','类型','活动','企业/组织','地点','城市','城市依据','城市网络来源','薪资','薪资依据','薪资来源','方向','IC设计验证适配分','AI应用开发适配分','当前方向适配分','学校链接']];
+      getFiltered().forEach(e => rows.push([fmtFull(e.start),e.type,e.title,e.company,e.place,e.city,e.cityBasis,e.citySourceUrl || '',e.salary || '未公开',e.salaryBasis || '待核验',e.salarySourceUrl || '',e.domain,e.personalFit.scores.ic.score,e.personalFit.scores.ai.score,e.personalFit.score,e.sourceUrl]));
+      const csv = rows.map(row => row.map(v => `"${String(v).replaceAll('"','""')}"`).join(',')).join('\r\n');
+      download('哈工程招聘活动筛选结果.csv', csv, 'text/csv;charset=utf-8');
+    }
+
+    function exportIcs(event) {
+      const icsDate = iso => new Date(iso).toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+      const clean = value => String(value).replace(/([,;])/g,'\\$1').replace(/\n/g,'\\n');
+      const ics = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//HRBEU Job Radar//CN','BEGIN:VEVENT',`UID:${event.id}@job.hrbeu.edu.cn`,`DTSTAMP:${icsDate(new Date().toISOString())}`,`DTSTART:${icsDate(event.start)}`,`DTEND:${icsDate(event.end)}`,`SUMMARY:${clean(event.title)}`,`LOCATION:${clean(event.place)}`,`DESCRIPTION:${clean(event.sourceUrl)}`,'END:VEVENT','END:VCALENDAR'].join('\r\n');
+      download(`${event.title.slice(0,30)}.ics`, ics, 'text/calendar;charset=utf-8');
+    }
+
+    function syncTrackButtons() { $$('.track-btn').forEach(button => button.classList.toggle('active', button.dataset.track === activeTrack)); }
+    function syncProfileForm() { $('#citiesInput').value = profile.cities; $('#keywordsInput').value = profile.keywords; $('#orgInput').value = profile.org; syncTrackButtons(); }
+    function saveProfile() {
+      profile = { cities: $('#citiesInput').value, keywords: $('#keywordsInput').value, org: $('#orgInput').value };
+      store.write('hrbeu-radar-profile', profile); updateStats(); render();
+      $('#saveProfileBtn').textContent = '已保存 ✓'; setTimeout(() => $('#saveProfileBtn').textContent = '保存画像并重排', 1200);
+    }
+    function resetFilters() {
+      $('#searchInput').value = ''; $$('.multi-select input[type="checkbox"]').forEach(input => input.checked = false); $$('.multi-select').forEach(updateMultiLabel); $('#sortSelect').value = 'time'; $('#minFit').value = 0; $('#minFitValue').textContent = '不限';
+      state.days = 'all'; state.favoriteOnly = false; state.shown = 30;
+      $$('.chip[data-days]').forEach(c => c.classList.toggle('active', c.dataset.days === 'all')); $('#favoriteOnly').classList.remove('active'); render();
+    }
+
+    $('#eventList').addEventListener('click', event => {
+      const detail = event.target.closest('[data-detail]'); if (detail) showDetail(detail.dataset.detail);
+      const favorite = event.target.closest('[data-favorite]'); if (favorite) { const id = favorite.dataset.favorite; favorites.has(id) ? favorites.delete(id) : favorites.add(id); store.write('hrbeu-radar-favorites', [...favorites]); render(); }
+    });
+    $$('.chip[data-days]').forEach(chip => chip.addEventListener('click', () => { state.days = chip.dataset.days; state.shown = 30; $$('.chip[data-days]').forEach(c => c.classList.toggle('active', c === chip)); render(); }));
+    $('#favoriteOnly').addEventListener('click', e => { state.favoriteOnly = !state.favoriteOnly; e.currentTarget.classList.toggle('active', state.favoriteOnly); render(); });
+    ['searchInput','cityFilter','typeFilter','domainFilter','sortSelect'].forEach(id => $('#' + id).addEventListener(id === 'searchInput' ? 'input' : 'change', event => { if (event.currentTarget.classList?.contains('multi-select')) updateMultiLabel(event.currentTarget); state.shown = 30; render(); }));
+    $$('.multi-trigger').forEach(trigger => trigger.addEventListener('click', event => {
+      event.stopPropagation(); const box = trigger.closest('.multi-select'); const willOpen = !box.classList.contains('open');
+      $$('.multi-select').forEach(item => { item.classList.remove('open'); $('.multi-trigger', item).setAttribute('aria-expanded', 'false'); });
+      if (willOpen) { box.classList.add('open'); trigger.setAttribute('aria-expanded', 'true'); }
+    }));
+    $$('.multi-clear').forEach(button => button.addEventListener('click', event => {
+      event.stopPropagation(); const box = button.closest('.multi-select'); $$('input[type="checkbox"]', box).forEach(input => input.checked = false); updateMultiLabel(box); state.shown = 30; render();
+    }));
+    document.addEventListener('click', event => { if (!event.target.closest('.multi-select')) $$('.multi-select').forEach(item => { item.classList.remove('open'); $('.multi-trigger', item).setAttribute('aria-expanded', 'false'); }); });
+    $('#minFit').addEventListener('input', e => { $('#minFitValue').textContent = e.target.value === '0' ? '不限' : `${e.target.value}+`; render(); });
+    $('#saveProfileBtn').addEventListener('click', saveProfile);
+    $('#resetBtn').addEventListener('click', resetFilters);
+    $('#exportBtn').addEventListener('click', exportCsv);
+    $('#loadMoreBtn').addEventListener('click', () => { state.shown += 30; render(); });
+    $('#closeDialogBtn').addEventListener('click', () => $('#detailDialog').close());
+    $('#detailDialog').addEventListener('click', e => { if (e.target === $('#detailDialog')) $('#detailDialog').close(); });
+    $('#detailActions').addEventListener('click', e => { if (e.target.closest('#icsBtn') && state.current) exportIcs(state.current); });
+    const profileDrawer = $('#profilePanel');
+    const profileTrigger = $('#mobileProfileBtn');
+    const drawerScrim = $('#drawerScrim');
+    function setProfileDrawer(open) {
+      profileDrawer.classList.toggle('open', open);
+      drawerScrim.classList.toggle('open', open);
+      profileDrawer.setAttribute('aria-hidden', String(!open));
+      profileTrigger.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('drawer-open', open);
+      if (open) { profileDrawer.removeAttribute('inert'); $('#closeProfileBtn').focus(); }
+      else { profileDrawer.setAttribute('inert', ''); profileTrigger.focus(); }
+    }
+    profileTrigger.addEventListener('click', () => setProfileDrawer(!profileDrawer.classList.contains('open')));
+    $('#closeProfileBtn').addEventListener('click', () => setProfileDrawer(false));
+    drawerScrim.addEventListener('click', () => setProfileDrawer(false));
+    document.addEventListener('keydown', event => { if (event.key === 'Escape' && profileDrawer.classList.contains('open')) setProfileDrawer(false); });
+    $('#updateBtn').addEventListener('click', () => $('#updateDialog').showModal());
+    $('#closeUpdateBtn').addEventListener('click', () => $('#updateDialog').close());
+    $('#updateDialog').addEventListener('click', e => { if (e.target === $('#updateDialog')) $('#updateDialog').close(); });
+    if (location.protocol === 'https:' || location.protocol === 'http:') {
+      $('#updateIntro').textContent = '这是在线版：GitHub Actions 会每天自动抓取学校公开列表并重新发布。需要立刻更新时，请在 GitHub 仓库的 Actions 页面运行 “Update and publish job radar”。';
+      $('#localUpdateSteps').hidden = true;
+      $('#localUpdateActions').hidden = true;
+      $('#updateHint').textContent = '在线版更新完成后刷新本页即可。GitHub 的定时任务在高峰期可能比计划时间晚一些执行。';
+    }
+    $$('.track-btn').forEach(button => button.addEventListener('click', () => {
+      activeTrack = button.dataset.track; store.write('hrbeu-radar-track', activeTrack); syncTrackButtons(); updateStats(); render();
+    }));
+
+    populateFilters(); syncProfileForm(); updateStats(); render();
+    if (window.location.hash === '#profile') setProfileDrawer(true);
+    $('#dataTime').textContent = `更新于 ${new Date(META.fetchedAt).toLocaleString('zh-CN', {hour12:false})}`;
+    $('#sourceNote').textContent = META.note;
+  </script>
+</body>
+</html>
