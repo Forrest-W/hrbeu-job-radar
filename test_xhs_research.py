@@ -139,6 +139,89 @@ class ResearchTests(unittest.TestCase):
         review['dimensions']['hours'].update(score=80, summary='test', evidenceIds=['a'*24,'b'*24])
         with self.assertRaises(ResearchError): x.validate_assessment(self.db, review)
 
+    def test_public_snapshot_has_progress_but_no_raw_notes(self):
+        self.add_evidence()
+        with patch.object(x, 'ROOT', Path(self.temp.name)):
+            snapshot = x.export_snapshot(self.db)
+        self.assertEqual(snapshot['progress'][self.company]['hours']['candidateCount'], 2)
+        self.assertNotIn('合成测试正文', json.dumps(snapshot, ensure_ascii=False))
+        self.assertNotIn('author_key', json.dumps(snapshot))
+
+    def test_review_queue_only_returns_complete_unreviewed_companies(self):
+        self.assertEqual(x.review_next(self.db)['packets'], [])
+        self.db.execute("UPDATE tasks SET state='no_results'")
+        self.db.commit()
+        self.assertEqual(len(x.review_next(self.db)['packets']), 1)
+        self.db.execute('INSERT INTO assessments VALUES (?,?)', (self.key, '{}'))
+        self.db.commit()
+        self.assertEqual(x.review_next(self.db)['packets'], [])
+
+    def test_search_alias_and_cross_dimension_evidence(self):
+        self.assertEqual(x.query_name('中国电子科技集团公司第五十三研究所'), '电科53所')
+        self.assertEqual(x.query_name('中国船舶集团有限公司第七二二研究所'), '中船722所')
+        self.add_evidence()
+        self.db.execute("DELETE FROM evidence WHERE dimension='salary'")
+        self.db.commit()
+        review=self.review()
+        review['dimensions']['salary'].update(score=60,summary='测试薪资证据',evidenceIds=['a'*24,'b'*24])
+        self.assertEqual(x.validate_assessment(self.db, review)['dimensions']['salary']['score'], 60)
+
+    def test_company_batch_queries_once_and_keeps_dimension_states(self):
+        class Fake:
+            calls=0
+            def search(self, query):
+                self.calls += 1
+                return [{'id':'a'*24,'note_card':{}}]
+            def detail(self, ident, token):
+                return {'desc':'合成测试正文', 'user':{'user_id':'author'}}
+        fake=Fake()
+        x.run_companies(self.db, fake, 5)
+        self.assertEqual(fake.calls, 1)
+        self.assertEqual(self.db.execute("SELECT count(*) FROM tasks WHERE state='fetched'").fetchone()[0], 3)
+        self.assertEqual(self.db.execute('SELECT count(*) FROM assessments').fetchone()[0], 0)
+        self.assertEqual(x.run_companies(self.db, fake, 5), 0)
+
+    def test_comments_are_cached_and_link_to_original_post(self):
+        class Fake:
+            calls=0
+            def comments(self, ident, token):
+                self.calls += 1
+                return [{'id':c*24,'content':'合成评论','user_info':{'user_id':c}} for c in ('b','c')]
+        client=Fake()
+        x.save_note(self.db,self.key,'hours','a'*24,{'title':'测试问题','desc':''})
+        x.collect_comments(self.db,client,self.key,list(x.DIMENSIONS),'a'*24,'TEST_ONLY')
+        x.collect_comments(self.db,client,self.key,list(x.DIMENSIONS),'a'*24,'TEST_ONLY')
+        self.assertEqual(client.calls,1)
+        review=self.review()
+        review['dimensions']['hours'].update(score=55,summary='合成评论测试',evidenceIds=['a'*24+':'+c*24 for c in ('b','c')])
+        result=x.validate_assessment(self.db,review)['dimensions']['hours']
+        self.assertEqual(result['sampleCount'],1)
+        self.assertEqual(result['commentCount'],2)
+        self.assertTrue(all(s['url'].endswith('/'+'a'*24) for s in result['sources']))
+
+    def test_company_comment_failure_stops_and_resumes_from_cache(self):
+        class Fake:
+            details = 0
+            blocked = True
+            def search(self, query): return [{'id':'a'*24,'note_card':{}}]
+            def detail(self, ident, token):
+                self.details += 1
+                return {'desc':'测试正文','user':{'user_id':'a'}}
+            def comments(self, ident, token):
+                if self.blocked: raise ResearchError('HTTP 461：测试暂停')
+                return []
+        client = Fake()
+        with self.assertRaises(ResearchError):
+            x.run_companies(self.db, client, 5, read_comments=True)
+        self.assertEqual(self.db.execute("SELECT count(*) FROM tasks WHERE state='blocked'").fetchone()[0], 3)
+        self.assertEqual(self.db.execute('SELECT state FROM enrichment').fetchone()[0], 'blocked')
+        self.assertEqual(x.review_next(self.db)['packets'], [])
+        client.blocked = False
+        x.run_companies(self.db, client, 5, read_comments=True)
+        self.assertEqual(client.details, 1)
+        self.assertEqual(self.db.execute('SELECT state FROM enrichment').fetchone()[0], 'complete')
+        self.assertEqual(x.run_companies(self.db, client, 5, read_comments=True), 0)
+
 
 if __name__ == '__main__':
     unittest.main()

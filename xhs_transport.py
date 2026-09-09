@@ -23,7 +23,7 @@ class XhsTransport:
     HOST = "https://edith.xiaohongshu.com"
     SEARCH_ENDPOINTS = {"https://edith.xiaohongshu.com/api/sns/web/v1/search/notes",
                         "https://so.xiaohongshu.com/api/sns/web/v2/search/notes"}
-    PATHS = {"/api/sns/web/v1/search/notes", "/api/sns/web/v2/search/notes", "/api/sns/web/v1/feed"}
+    PATHS = {"/api/sns/web/v1/search/notes", "/api/sns/web/v2/search/notes", "/api/sns/web/v1/feed", "/api/sns/web/v2/comment/page"}
 
     def __init__(self, cookies: dict[str, str], delay: float = 5, endpoint=None, user_agent=None):
         try:
@@ -45,13 +45,16 @@ class XhsTransport:
         self.last_request = 0.0
         self.opener = urllib.request.build_opener(NoRedirect())
 
-    def request(self, path: str, payload: dict) -> dict:
+    def request(self, path: str, payload: dict, method='POST') -> dict:
         if path not in self.PATHS:
-            raise ResearchError("仅允许笔记搜索和详情读取接口。")
+            raise ResearchError("仅允许笔记搜索、详情和公开评论读取接口。")
         time.sleep(max(0, self.delay - (time.monotonic() - self.last_request)))
         try:
-            signed = self.signer.sign_headers_post(path, self.cookies, payload=payload,
-                                                   x_rap=path.startswith('/api/sns/web/v2/search/'))
+            if method == 'GET':
+                signed = self.signer.sign_headers_get(path, self.cookies, params=payload)
+            else:
+                signed = self.signer.sign_headers_post(path, self.cookies, payload=payload,
+                                                       x_rap=path.startswith('/api/sns/web/v2/search/'))
         except Exception:
             raise ResearchError("请求签名生成失败；请核对登录信息和签名适配器版本。") from None
         headers = {k: str(v) for k, v in signed.items() if k.lower() in {
@@ -62,7 +65,10 @@ class XhsTransport:
                         "Content-Type": "application/json;charset=UTF-8"})
         body = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).encode()
         host = "https://so.xiaohongshu.com" if path == "/api/sns/web/v2/search/notes" else self.HOST
-        req = urllib.request.Request(host + path, body, headers, method="POST")
+        if method == 'GET':
+            path = self.signer.build_url(path, payload)
+            body = None
+        req = urllib.request.Request(host + path, body, headers, method=method)
         self.last_request = time.monotonic()
         try:
             with self.opener.open(req, timeout=25) as response:
@@ -95,3 +101,10 @@ class XhsTransport:
         if not isinstance(items, list) or not items or not isinstance(items[0].get("note_card"), dict):
             raise ResearchError("详情响应没有可读正文；保留待完成状态。")
         return items[0]["note_card"]
+
+    def comments(self, note_id, token):
+        data = self.request('/api/sns/web/v2/comment/page', {
+            'note_id':note_id,'cursor':'','top_comment_id':'','image_formats':'jpg,webp,avif','xsec_token':token}, 'GET')
+        if not isinstance(data.get('comments'), list):
+            raise ResearchError('评论响应缺少数组，暂停核对接口。')
+        return data['comments'][:8]

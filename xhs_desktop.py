@@ -34,10 +34,10 @@ def main():
     curl_box.grid(row=2, column=0, sticky="nsew", padx=16, pady=8)
     controls = ttk.Frame(win, padding=(16, 4))
     controls.grid(row=3, column=0, sticky="ew")
-    ttk.Label(controls, text="本批查询维度数：").pack(side="left")
-    limit = tk.IntVar(value=6)
+    ttk.Label(controls, text="本批企业数：").pack(side="left")
+    limit = tk.IntVar(value=2)
     ttk.Spinbox(controls, from_=1, to=900, increment=3, width=6, textvariable=limit).pack(side="left")
-    ttk.Label(controls, text="  每家3个维度，每维最多3篇；默认约2家。").pack(side="left")
+    ttk.Label(controls, text="  每家最多3篇正文及部分公开评论，分别审阅3个维度。").pack(side="left")
     buttons = ttk.Frame(win, padding=(16,8))
     buttons.grid(row=4, column=0, sticky="ew")
     messages = tk.Text(win, height=10, state="disabled", wrap="word", font=("Microsoft YaHei", 10))
@@ -59,7 +59,7 @@ def main():
             if not 1 <= amount <= 900:
                 raise ValueError()
         except (ValueError, tk.TclError):
-            messagebox.showerror("批量大小", "请输入1–900之间的维度数。")
+            messagebox.showerror("批量大小", "请输入1–900之间的企业数。")
             return
         payload = curl_box.get("1.0", "end").strip() if import_new else None
         if import_new and not payload:
@@ -73,6 +73,8 @@ def main():
             args += ["import-curl", "--stdin", "--run", "--limit", str(amount)]
         else:
             args += ["run", "--limit", str(amount)]
+        if not status:
+            args += ['--by-company','--comments']
         if not status and company_name.get().strip():
             args += ['--company', company_name.get().strip()]
         job["busy"] = True

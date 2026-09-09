@@ -6,5 +6,5 @@ if (-not (Test-Path -LiteralPath $researchPython)) {
 }
 $OutputEncoding = [System.Text.UTF8Encoding]::new($false)
 # Send clipboard content as text on stdin, never as shell code or a process argument.
-Get-Clipboard -Raw | & $researchPython -X utf8 xhs_research.py import-curl --stdin --run --limit 6
+Get-Clipboard -Raw | & $researchPython -X utf8 xhs_research.py import-curl --stdin --run --by-company --comments --limit 2
 exit $LASTEXITCODE

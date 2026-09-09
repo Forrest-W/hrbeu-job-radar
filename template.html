@@ -181,6 +181,19 @@
     .result-meta strong { font-size: 19px; letter-spacing: -.02em; }
     .result-meta span { color: var(--muted); font-size: 12px; }
     .event-list { display: grid; gap: 10px; }
+    .research-overview { margin: 10px 0 16px; padding: 13px 15px; background: #e7f0eb; border-radius: 14px; }
+    .research-overview p { margin: 6px 0 0; color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .research-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 10px; }
+    .research-controls label { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+    .research-controls select { width: auto; max-width: 100%; min-height: 34px; }
+    .xhs-card { grid-column: 1 / -1; border-top: 1px solid var(--line); padding-top: 12px; }
+    .xhs-card header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; font-size: 13px; }
+    .xhs-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-top: 10px; }
+    .xhs-grid h4 { font-size: 12px; margin: 0 0 5px; }
+    .xhs-grid p { font-size: 12px; color: var(--muted); margin: 0; line-height: 1.65; overflow-wrap: anywhere; }
+    .xhs-card footer { color: var(--muted); font-size: 11px; margin-top: 10px; }
+    [hidden] { display: none !important; }
+    @media(max-width:760px) { .xhs-grid { grid-template-columns: 1fr; gap: 12px; } }
     .date-divider { display: flex; align-items: center; gap: 11px; margin: 16px 2px 5px; color: var(--muted); font-size: 12px; font-weight: 800; }
     .date-divider::after { content: ""; height: 1px; background: var(--line); flex: 1; }
     .event-card {
@@ -368,8 +381,13 @@
             <button class="chip" data-days="30">30 天内</button>
             <button class="chip" id="favoriteOnly">只看收藏</button>
           </div>
-          <div class="view-actions"><select id="sortSelect" aria-label="排序"><option value="time">按时间</option><option value="fit">按适配度</option><option value="views">按热度</option></select><button class="btn btn-sm" id="resetBtn">重置筛选</button></div>
+          <div class="view-actions"><select id="sortSelect" aria-label="排序"><option value="time">按时间</option><option value="fit">按适配度</option><option value="reviews">按小红书评价分</option><option value="views">按热度</option></select><button class="btn btn-sm" id="resetBtn">重置筛选</button></div>
         </div>
+        <section class="research-overview" aria-label="小红书调研进度">
+          <strong id="researchCount">小红书企业调研</strong>
+          <p id="researchInfo"></p>
+          <div class="research-controls"><label for="reviewFilter">调研状态<select id="reviewFilter"><option value="all">全部企业</option><option value="reviewed">已审阅</option><option value="dim_scored">有分维评分</option><option value="scored">有完整评价分</option><option value="fetched">已查询待审阅</option><option value="partial">部分查询 / 已暂停</option><option value="pending">尚未查询</option></select></label></div>
+        </section>
         <div class="result-meta"><strong id="resultCount">0 场活动</strong><span id="dataTime"></span></div>
         <div class="event-list" id="eventList" aria-live="polite"></div>
         <button class="btn load-more" id="loadMoreBtn" hidden>再显示 30 条</button>
@@ -487,12 +505,37 @@
       return new Set($$(`#${id} input[type="checkbox"]:checked`).map(input => input.value));
     }
 
+    const XHS_LABELS = {hours:'作息', salary:'薪资', experience:'工作体验'};
+    const XHS_TASK_LABELS = {pending:'尚未查询', running:'查询中', blocked:'查询暂停，等待续查', fetched:'已获取候选帖子，待审阅', no_results:'已查询，无可读结果'};
+    function researchState(event) {
+      if (event.xhsResearch) return 'reviewed';
+      const tasks = Object.values(event.xhsProgress || {});
+      if (tasks.length === 3 && tasks.every(t => ['fetched','no_results'].includes(t.state))) return 'fetched';
+      if (tasks.some(t => t.state !== 'pending')) return 'partial';
+      return 'pending';
+    }
+    function renderResearchCard(event) {
+      const review = event.xhsResearch;
+      const progress = event.xhsProgress || {};
+      const completed = Object.values(progress).filter(t => ['fetched','no_results'].includes(t.state)).length;
+      const state = researchState(event);
+      const label = ({reviewed:'已审阅',fetched:'已查询，待审阅',partial:'部分查询',pending:'尚未查询'})[state];
+      const total = review?.overallScore;
+      return `<section class="xhs-card"><header><strong>小红书 · ${esc(label)}</strong><span>${total != null ? `评价分 ${esc(total)} / 100` : (review ? '综合分：证据不足' : `查询 ${completed}/3 个维度`)}</span></header><div class="xhs-grid">` +
+        Object.entries(XHS_LABELS).map(([key,label]) => {
+          const dimension = review?.dimensions?.[key];
+          const task = progress[key];
+          const summary = dimension?.summary || XHS_TASK_LABELS[task?.state || 'pending'];
+          return `<div><h4>${esc(label)}${dimension?.score != null ? ` · ${esc(dimension.score)}分` : ''}</h4><p>${esc(summary)}</p></div>`;
+        }).join('') + `</div><footer>${review ? '短摘要来自帖子审阅；查看判断可见岗位背景、置信度和原帖来源。' : '候选帖子需要核验企业、岗位和年份，尚不代表企业结论。'}</footer></section>`;
+    }
     function getFiltered() {
       const query = $('#searchInput').value.trim().toLowerCase();
       const cities = selectedValues('cityFilter');
       const types = selectedValues('typeFilter');
       const domains = selectedValues('domainFilter');
       const minFit = Number($('#minFit').value);
+      const reviewFilter = $('#reviewFilter').value;
       let result = EVENTS.map(event => ({...event, personalFit: scoreEvent(event)})).filter(event => {
         const haystack = `${event.title} ${event.company} ${event.place} ${event.city} ${event.domain}`.toLowerCase();
         if (query && !haystack.includes(query)) return false;
@@ -502,10 +545,14 @@
         if (event.personalFit.score < minFit) return false;
         if (state.days !== 'all' && (dayDiff(event) < 0 || dayDiff(event) > Number(state.days))) return false;
         if (state.favoriteOnly && !favorites.has(event.id)) return false;
+        if (reviewFilter === 'scored' && event.xhsResearch?.overallScore == null) return false;
+        if (reviewFilter === 'dim_scored' && !(event.xhsResearch?.coverage > 0)) return false;
+        if (!['all','scored','dim_scored'].includes(reviewFilter) && researchState(event) !== reviewFilter) return false;
         return true;
       });
       const sort = $('#sortSelect').value;
       if (sort === 'fit') result.sort((a,b) => b.personalFit.score - a.personalFit.score || dateOf(a) - dateOf(b));
+      else if (sort === 'reviews') result.sort((a,b) => (b.xhsResearch?.overallScore ?? -1) - (a.xhsResearch?.overallScore ?? -1) || dateOf(a)-dateOf(b));
       else if (sort === 'views') result.sort((a,b) => b.views - a.views || dateOf(a) - dateOf(b));
       else result.sort((a,b) => dateOf(a) - dateOf(b));
       return result;
@@ -538,6 +585,7 @@
           <div class="salary"><span class="cell-label">薪资</span><strong>${esc(event.salary || '未公开')}</strong><small>${esc(event.salaryBasis || '待核验')}</small></div>
           <div class="fit"><span class="cell-label">${esc(activeTrack === 'all' ? '双方向最高适配' : `${TRACK_LABELS[activeTrack]}适配`)}</span><div class="fit-top"><b style="color:${fitColor(fit)}">${fit}</b><span>${fit >= 75 ? '优先看' : fit >= 55 ? '值得核实' : '低优先'}</span></div><div class="fit-pair"><span>IC <b>${event.personalFit.scores.ic.score}</b></span><span>AI <b>${event.personalFit.scores.ai.score}</b></span></div><div class="fit-bar"><i style="width:${fit}%;background:${fitBarColor(fit)}"></i></div></div>
           <div class="card-actions"><button class="btn btn-sm favorite ${fav ? 'active' : ''}" data-favorite="${esc(event.id)}">${fav ? '★ 已收藏' : '☆ 收藏'}</button><button class="btn btn-sm" data-detail="${esc(event.id)}">查看判断</button></div>
+          ${renderResearchCard(event)}
         </article>`;
       }).join('');
     }
@@ -566,6 +614,15 @@
       $('#statFit').textContent = scored.filter(x => x.fit >= 75).length;
       $('#statFitLabel').textContent = `${TRACK_LABELS[activeTrack]}高适配`;
       $('#statCompanies').textContent = new Set(EVENTS.map(e => e.company)).size;
+      const unique = [...new Map(EVENTS.map(e => [e.company,e])).values()];
+      const searched = unique.filter(e => Object.values(e.xhsProgress || {}).filter(t => ['fetched','no_results'].includes(t.state)).length === 3).length;
+      const reviewed = unique.filter(e => e.xhsResearch).length;
+      const rated = unique.filter(e => e.xhsResearch?.overallScore != null).length;
+      const dimensionRated = unique.filter(e => e.xhsResearch?.coverage > 0).length;
+      $('#researchCount').textContent = `小红书调研 · 已查 ${searched}/${unique.length} 家 · 已审阅 ${reviewed} 家 · 有分维评分 ${dimensionRated} 家（完整 ${rated} 家）`;
+      const withComments = unique.filter(e => Object.values(e.xhsProgress || {}).some(t => t.commentState === 'complete')).length;
+      const paused = unique.some(e => Object.values(e.xhsProgress || {}).some(t => t.state === 'blocked' || t.commentState === 'blocked'));
+      $('#researchInfo').textContent = `${paused ? '查询已暂停：平台请求受阻，需在小红书检查登录/验证后从本机续查。' : ''}作息 / 薪资 / 工作体验。已查为首轮检索完成；已补评论 ${withComments} 家，图片未纳入。缺证不打分。${META.researchUpdatedAt ? '调研快照：' + new Date(META.researchUpdatedAt).toLocaleString('zh-CN',{hour12:false}) : '尚无查询进度快照。'}`;
     }
 
     function showDetail(id) {
@@ -579,11 +636,11 @@
       $('#detailReview').textContent = event.reputation;
       const research = event.xhsResearch;
       if (!research) {
-        $('#xhsReview').innerHTML = '<h3>小红书企业评价 · 待调研</h3><p>作息、薪资和工作体验还没有经审核的帖子依据，暂不评分。</p>';
+        $('#xhsReview').innerHTML = renderResearchCard(event);
       } else {
         const labels = {hours: '作息', salary: '薪资', experience: '工作体验'};
         $('#xhsReview').innerHTML = `<h3>小红书评价分：${research.overallScore == null ? '证据不足' : esc(research.overallScore) + ' / 100'}</h3><p>证据覆盖 ${esc(research.coverage)} / 3；该分值独立于岗位适配分。</p>` +
-          Object.entries(research.dimensions).map(([key, value]) => `<h4>${esc(labels[key] || key)} · ${value.score == null ? '暂不评分' : esc(value.score)}</h4><p>${esc(value.summary || '缺少依据')}</p><p>${esc(value.context)} · ${esc(value.sampleCount)} 篇样本 · 置信度 ${esc(({low:'低',medium:'中',high:'高'})[value.confidence] || '未知')}</p>${value.conflicts ? `<p>分歧：${esc(value.conflicts)}</p>` : ''}<p>${(value.sources || []).filter(s => /^https:\/\/www\.xiaohongshu\.com\/explore\/[0-9a-f]{24}$/i.test(s.url)).map((s, i) => `<a href="${esc(s.url)}" target="_blank" rel="noreferrer">帖子依据 ${i + 1} ↗</a>`).join(' · ')}</p>`).join('') +
+          Object.entries(research.dimensions).map(([key, value]) => `<h4>${esc(labels[key] || key)} · ${value.score == null ? '暂不评分' : esc(value.score)}</h4><p>${esc(value.summary || '缺少依据')}</p><p>${esc(value.context)} · 引用 ${esc(value.sampleCount)} 篇原帖、${esc(value.commentCount || 0)} 条评论 · ${esc(value.authorCount || 0)} 位作者 · 置信度 ${esc(({low:'低',medium:'中',high:'高'})[value.confidence] || '未知')}</p>${value.conflicts ? `<p>分歧：${esc(value.conflicts)}</p>` : ''}<p>${(value.sources || []).filter(s => /^https:\/\/www\.xiaohongshu\.com\/explore\/[0-9a-f]{24}$/i.test(s.url)).map((s, i) => `<a href="${esc(s.url)}" target="_blank" rel="noreferrer">帖子依据 ${i + 1} ↗</a>`).join(' · ')}</p>`).join('') +
           `<p>评估时间：${esc(research.evaluatedAt)}。匿名帖子仅代表样本体验，具体部门、城市和岗位需另行核实。</p>`;
       }
       $('#detailVerify').textContent = event.verify;
@@ -599,8 +656,8 @@
     }
 
     function exportCsv() {
-      const rows = [['时间','类型','活动','企业/组织','地点','城市','城市依据','城市网络来源','薪资','薪资依据','薪资来源','方向','IC设计验证适配分','AI应用开发适配分','当前方向适配分','学校链接']];
-      getFiltered().forEach(e => rows.push([fmtFull(e.start),e.type,e.title,e.company,e.place,e.city,e.cityBasis,e.citySourceUrl || '',e.salary || '未公开',e.salaryBasis || '待核验',e.salarySourceUrl || '',e.domain,e.personalFit.scores.ic.score,e.personalFit.scores.ai.score,e.personalFit.score,e.sourceUrl]));
+      const rows = [['时间','类型','活动','企业/组织','地点','城市','城市依据','城市网络来源','薪资','薪资依据','薪资来源','方向','IC设计验证适配分','AI应用开发适配分','当前方向适配分','学校链接','小红书调研状态','小红书综合分','小红书作息摘要','小红书薪资摘要','小红书体验摘要']];
+      getFiltered().forEach(e => rows.push([fmtFull(e.start),e.type,e.title,e.company,e.place,e.city,e.cityBasis,e.citySourceUrl || '',e.salary || '未公开',e.salaryBasis || '待核验',e.salarySourceUrl || '',e.domain,e.personalFit.scores.ic.score,e.personalFit.scores.ai.score,e.personalFit.score,e.sourceUrl,researchState(e),e.xhsResearch?.overallScore ?? '',...Object.keys(XHS_LABELS).map(key => e.xhsResearch?.dimensions?.[key]?.summary || '')]));
       const csv = rows.map(row => row.map(v => `"${String(v).replaceAll('"','""')}"`).join(',')).join('\r\n');
       download('哈工程招聘活动筛选结果.csv', csv, 'text/csv;charset=utf-8');
     }
@@ -620,7 +677,7 @@
       $('#saveProfileBtn').textContent = '已保存 ✓'; setTimeout(() => $('#saveProfileBtn').textContent = '保存画像并重排', 1200);
     }
     function resetFilters() {
-      $('#searchInput').value = ''; $$('.multi-select input[type="checkbox"]').forEach(input => input.checked = false); $$('.multi-select').forEach(updateMultiLabel); $('#sortSelect').value = 'time'; $('#minFit').value = 0; $('#minFitValue').textContent = '不限';
+      $('#searchInput').value = ''; $('#reviewFilter').value = 'all'; $$('.multi-select input[type="checkbox"]').forEach(input => input.checked = false); $$('.multi-select').forEach(updateMultiLabel); $('#sortSelect').value = 'time'; $('#minFit').value = 0; $('#minFitValue').textContent = '不限';
       state.days = 'all'; state.favoriteOnly = false; state.shown = 30;
       $$('.chip[data-days]').forEach(c => c.classList.toggle('active', c.dataset.days === 'all')); $('#favoriteOnly').classList.remove('active'); render();
     }
@@ -631,7 +688,7 @@
     });
     $$('.chip[data-days]').forEach(chip => chip.addEventListener('click', () => { state.days = chip.dataset.days; state.shown = 30; $$('.chip[data-days]').forEach(c => c.classList.toggle('active', c === chip)); render(); }));
     $('#favoriteOnly').addEventListener('click', e => { state.favoriteOnly = !state.favoriteOnly; e.currentTarget.classList.toggle('active', state.favoriteOnly); render(); });
-    ['searchInput','cityFilter','typeFilter','domainFilter','sortSelect'].forEach(id => $('#' + id).addEventListener(id === 'searchInput' ? 'input' : 'change', event => { if (event.currentTarget.classList?.contains('multi-select')) updateMultiLabel(event.currentTarget); state.shown = 30; render(); }));
+    ['searchInput','cityFilter','typeFilter','domainFilter','sortSelect','reviewFilter'].forEach(id => $('#' + id).addEventListener(id === 'searchInput' ? 'input' : 'change', event => { if (event.currentTarget.classList?.contains('multi-select')) updateMultiLabel(event.currentTarget); state.shown = 30; render(); }));
     $$('.multi-trigger').forEach(trigger => trigger.addEventListener('click', event => {
       event.stopPropagation(); const box = trigger.closest('.multi-select'); const willOpen = !box.classList.contains('open');
       $$('.multi-select').forEach(item => { item.classList.remove('open'); $('.multi-trigger', item).setAttribute('aria-expanded', 'false'); });

@@ -819,14 +819,18 @@ def build_html(template_path: Path, output_path: Path, events: list[dict[str, An
     template = template_path.read_text(encoding="utf-8")
     # Only explicitly exported short assessments are eligible for the public site.
     report_path = template_path.parent / "reviews" / "xhs-reviewed.json"
-    reports = json.loads(report_path.read_text(encoding="utf-8")).get("reports", []) if report_path.exists() else []
+    snapshot = json.loads(report_path.read_text(encoding="utf-8")) if report_path.exists() else {}
+    reports = snapshot.get("reports", [])
+    progress = snapshot.get('progress', {})
     by_company = {report["company"]: report for report in reports}
-    events = [{**{k: v for k, v in event.items() if k != "xhsResearch"},
-               "xhsResearch": by_company.get(event.get("company"))} for event in events]
+    events = [{**{k: v for k, v in event.items() if k not in ("xhsResearch", "xhsProgress")},
+               "xhsResearch": by_company.get(event.get("company")),
+               "xhsProgress": progress.get(event.get('company'), {})} for event in events]
     meta = {
         "fetchedAt": fetched_at.astimezone().isoformat(timespec="seconds"),
         "source": BASE_URL,
         "count": len(events),
+        "researchUpdatedAt": snapshot.get('generatedAt'),
         "note": "城市多为名称或总部/主要基地推断；适配分按 IC 设计验证与 AI 应用开发两条简历方向初筛，不是录用概率。",
     }
     output = template.replace("__EVENT_DATA__", safe_json_for_script(events))
