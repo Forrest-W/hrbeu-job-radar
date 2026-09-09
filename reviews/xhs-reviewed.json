@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T08:21:42+00:00",
+  "generatedAt": "2026-09-09T08:38:06+00:00",
   "reports": [
     {
       "company": "中国航发控制系统研究所",
@@ -8491,6 +8491,1776 @@
         "salary": 0.35,
         "experience": 0.25
       }
+    },
+    {
+      "company": "中信重工机械股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:22:18+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "路过者说晚9点仍亮灯，不能证明目标岗位个人工时，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "一个硕士待遇求助下回复底薪7K，岗位与税前后未说明，没有独立验证；机械行业泛帖的7500也未明确本公司，不混用。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "69da0412000000001a025187:69da0838000000000103f1d3"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/69da0412000000001a025187",
+              "publishedAt": "1775896632000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "回乡求职帖中的劝退与泛好评没有具体经历，本轮暂无足够管理或成长结论。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "中国机械工业集团有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:22:19+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "集团下属单位众多，首轮未明确各单位工时，不能给统一结论。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "三级、四级企业及研究所的待遇评论不能互相代替，招聘推广自身薪资范围也矛盾；须确认具体用人单位。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "评论既有低待遇担忧也有技术积累认可，但均未具名子公司，不能形成集团工作体验分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a1cd587000000003503bab4"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a1cd587000000003503bab4",
+              "publishedAt": "1780274567000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "中国第一汽车集团有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:23:01+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "集团级样本未给明确岗位工时，不能以个别品牌或子公司代表全集团。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "招聘推广的学历薪资区间未验证；一汽大众标题帖被评论指出实际是大众中国，已排除其奖金福利，不混用。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "行业泛排名和未明确单位的评论不足以评价集团工作体验，需按具体下属公司查询。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "北京汽车集团有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:23:36+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "一位北汽候选人转述855，评论质疑，但未明确下属企业和岗位，不能给集团统一作息。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a82cb5f0000000025008e5b"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a82cb5f0000000025008e5b",
+              "publishedAt": "1786956639000"
+            }
+          ]
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "比较帖仅写N加补贴、公租房线索，未公开N或签约主体；大众中国和理想汽车资料已排除。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "集团泛比较中不少人只有小鹏经历，对北汽管理多属推测，没有足够在职证据，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "北汽福田汽车股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:24:18+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "有考勤趋严和加班文化描述，但缺少明确目标部门工时，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": 45,
+          "confidence": "low",
+          "summary": "2025年智能驾驶控制硕士候选人称1.2万元×13薪、试用期全薪，转正涨幅0–20%；评论提醒绩效可能打折。初评45分，0–20%不等于保证涨薪，需明确固定工资和绩效口径。",
+          "context": "北京智能驾驶部门候选报价，低置信度；历史其他岗位3.8K不套用",
+          "conflicts": "",
+          "evidenceIds": [
+            "68d4a798000000001301ffc9",
+            "68d4a798000000001301ffc9:68d4c39f0000000030008be9",
+            "68d4a798000000001301ffc9:68d50d6c000000000b0170cf"
+          ],
+          "sampleCount": 1,
+          "authorCount": 3,
+          "commentCount": 2,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68d4a798000000001301ffc9",
+              "publishedAt": "1758793068000"
+            }
+          ]
+        },
+        "experience": {
+          "score": 55,
+          "confidence": "low",
+          "summary": "一位五年后离职者肯定技术积累，另一评论认为流程并不刻板、有人做实事；投稿简介却反映流程和薪资瓶颈。利弊并存，初评55分，事业部差异需核实。",
+          "context": "同帖小样本、匿名经历，低置信度",
+          "conflicts": "",
+          "evidenceIds": [
+            "6882e0f0000000001201717f",
+            "6882e0f0000000001201717f:688383bd000000001b03c1a1",
+            "6882e0f0000000001201717f:6883acbe000000000900d006"
+          ],
+          "sampleCount": 1,
+          "authorCount": 3,
+          "commentCount": 2,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6882e0f0000000001201717f",
+              "publishedAt": "1753459903000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 2,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "千校",
+      "reviewer": "当前对话助手：学校活动标题及检索资料核对",
+      "evaluatedAt": "2026-09-09T08:25:03+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "学校记录对应千校招聘线路双选会，不是单一用人单位，不能给统一作息。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "应按具体参会企业与岗位查询薪资，千问等同音检索结果已排除。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "招聘会本身不适用企业工作体验评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "千校万企联合促就业",
+      "reviewer": "当前对话助手：学校活动标题及检索资料核对",
+      "evaluatedAt": "2026-09-09T08:25:03+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "这是哈尔滨工程大学专场双选会名称，不是企业，不给统一作息。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "不同参会单位待遇不同，不能从泛求职帖子生成招聘会薪资。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "不适用企业工作体验评分，应选择具体参会单位查看。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "国电投莱阳核能有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:25:34+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "莱阳招聘帖未披露日常工时、倒班或项目阶段安排。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "待遇倾斜只是招聘宣传，没有金额、组成和兑现记录，不能评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a9f4b31000000002601ffbb"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a9f4b31000000002601ffbb",
+              "publishedAt": "1788824369000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "氛围好、机会多缺少员工具体经历；上海核工院和钍能讨论不归属莱阳公司，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "大连华锐重工集团股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:26:10+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "财务与设计求职讨论都没有明确工时，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "有人称硕士有安家费，但金额与条件不明；高低评价相反且无工资数字，薪资汇总正文也未披露明细。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a79a73e000000003301f0dc:6a79c3a4000000002a026ded"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a79a73e000000003301f0dc",
+              "publishedAt": "1786364836000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "泛好评和劝退没有具体在职经过，财务帖作者明确未入职，不能作为员工评价，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "奇瑞汽车股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:26:46+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "一位评论者提醒做好996准备，其他强度描述为转述，缺少具体岗位工时验证，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a1ec3f90000000021017484:6a1fd4ac000000002701ccd6"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a1ec3f90000000021017484",
+              "publishedAt": "1780470956000"
+            }
+          ]
+        },
+        "salary": {
+          "score": 40,
+          "confidence": "low",
+          "summary": "2026年硕士候选人认为报价较低，另一硕士评论者披露8700元且其中10%作绩效。初评40分，仅反映入门报价；P7数十万元的高职级讨论不能代表校招。",
+          "context": "硕士候选样本，季度绩效发放和税前后须核实，低置信度",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a1ec3f90000000021017484",
+            "6a1ec3f90000000021017484:6a1fc5d6000000002b029e5c"
+          ],
+          "sampleCount": 1,
+          "authorCount": 2,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a1ec3f90000000021017484",
+              "publishedAt": "1780467158000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "资料主要围绕工资、求职与职级，没有足够在职管理和技术成长经历。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 1,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "山东临工工程机械有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:27:18+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "招聘与offer帖未给实际作息；海外岗位需外派，但无具体时长。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "内推文称外派税后总包20–50万元，国家与岗位未明确，不能套用国内研发；校招候选人只说当地待遇不错，暂无可靠统一金额。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "69d5ca25000000001a0236ec"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/69d5ca25000000001a0236ec",
+              "publishedAt": "1775618597000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "一位候选人因培训后定岗不确定而拒绝offer，建议核实岗位分配；这不是在职管理结论，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "69ca9fe3000000002102c39d"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/69ca9fe3000000002102c39d",
+              "publishedAt": "1774886883000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "山推工程机械股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:27:51+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "比较帖的加班描述主要指泰开，没有明确山推工时，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "2026年济宁研发技术岗硕士候选人称税前10K；评论6400与作者估计7000多到手的口径未核实，不能据此认定降薪或实际年收入。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a4c99bd000000001702b573"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a4c99bd000000001702b573",
+              "publishedAt": "1783404989000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "多条评论担心实际定岗或后续调岗，未提供具体个人调岗经过；建议核实研发岗位与轮岗安排，不作确定管理评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a4c99bd000000001702b573:6a4cd687000000002a024c33",
+            "6a4c99bd000000001702b573:6a5c2ab9000000002b025dbf"
+          ],
+          "sampleCount": 1,
+          "authorCount": 2,
+          "commentCount": 2,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a4c99bd000000001702b573",
+              "publishedAt": "1784425146000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "常州博瑞电力自动化设备有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:28:49+00:00",
+      "dimensions": {
+        "hours": {
+          "score": 25,
+          "confidence": "low",
+          "summary": "两位评论者都提到一年出差300天以上，其中家属描述假日也在外、经常赶路。初评25分仅作长期出差岗位风险提示；厂内试验与研发不能直接套用。",
+          "context": "2025–2026年同帖小样本，岗位未完全明确，需核实出差比例",
+          "conflicts": "",
+          "evidenceIds": [
+            "68d0f8f200000000130104cb:68d1691a000000000a00e312",
+            "68d0f8f200000000130104cb:6a901f1a000000000b0178e0"
+          ],
+          "sampleCount": 1,
+          "authorCount": 2,
+          "commentCount": 2,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68d0f8f200000000130104cb",
+              "publishedAt": "1787830042000"
+            }
+          ]
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "多位网友认可常州当地待遇，但硕士21–26万元和17薪只来自非官方汇总，未有具体offer验证；出差补贴不能当固定工资。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a8e4aeb000000002102fba1"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a8e4aeb000000002102fba1",
+              "publishedAt": "1787710187000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "工作体验讨论主要是出差强度及福利，缺少培养、管理、技术成长经历，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 1,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "广西柳工机械股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:29:34+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "本轮高强度说法主要是工程机械行业泛论，缺少具体事业部工时。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "一位硕士评论者自述2024年offer月薪1万元，其他1.2–1.6万或更低金额的岗位/学历不明；不能合并为统一范围，需核实定岗和年终。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "68c3cae3000000001d007ec7:68c3d217000000003001ae79"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68c3cae3000000001d007ec7",
+              "publishedAt": "1757663767000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "候选人提到签约未定岗；淘汰比例、关系户等评论缺少验证，且有反驳，暂不作为公司确定事实或工作体验分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "67010033000000002c02d795:6701177800000000240065fc"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/67010033000000002c02d795",
+              "publishedAt": "1728124792000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "徐工集团工程机械股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:29:34+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "汇总文称研发和周六加班，但未明确所属公司及岗位，无法给集团统一工时。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "多份汇总覆盖不同事业部且可信度受质疑；液压件研发16万元只是未限定年份的历史案例，不代表当年校招。不用宣传最高区间评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a37a5500000000007027596"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a37a5500000000007027596",
+              "publishedAt": "1782031696000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "个别评论投诉绩效兑现和入职体验，但没有明确子公司；请先核对签约主体，暂无可比在职管理结论。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "招商银行股份有限公司哈尔滨分行",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:30:09+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "哈尔滨具体岗位没有明确工时与考核压力回答，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "两条本地评论认为收入在哈尔滨银行中较好，但没有级别、金额及结构；全国分行均值、总行和招银网络待遇不能套用。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "69abb461000000002801f87a:69b215fd000000000103cadb",
+            "69abb461000000002801f87a:69e9bccc000000001401c805"
+          ],
+          "sampleCount": 1,
+          "authorCount": 2,
+          "commentCount": 2,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/69abb461000000002801f87a",
+              "publishedAt": "1776925900000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "本地样本以学历和工资求助为主，暂无充分员工管理、培养体验。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "新华三技术有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:30:50+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "一位评论者称每月要求加班30小时且无加班费，其他主要是跨平台转载，缺少具体部门和独立验证，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a6cba5c000000002402dc4e:6a70955f000000002b000df5"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a6cba5c000000002402dc4e",
+              "publishedAt": "1785763168000"
+            }
+          ]
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "老员工评论介绍14薪可摊到每月，但没有工资基数；校招推广的14薪含年终口径不同且被指出有错误。临发offer降500是转载，暂不作为统一薪资事实。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a6cba5c000000002402dc4e:6a6ce586000000002a030fda"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a6cba5c000000002402dc4e",
+              "publishedAt": "1785521542000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "转载和评论反映薪资倒挂、氛围变化及试用期解约风险，但可比较的直接经历不足；建议核实试用期考核、培训安排，不硬打分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a82a87d00000000330136be:6a9007860000000015017cda"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a82a87d00000000330136be",
+              "publishedAt": "1787824006000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "深圳桃李未来教育集团有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:31:41+00:00",
+      "dimensions": {
+        "hours": {
+          "score": 40,
+          "confidence": "low",
+          "summary": "教师候选人转述周一周二休息，但有评论称实际仅休1.5天，一对一老师还反映休息时需回复家长学生。初评40分，班型、寒暑假和学科不同，不能只看名义上下班时间。",
+          "context": "2024–2026年教师岗样本，不适用于技术岗位",
+          "conflicts": "",
+          "evidenceIds": [
+            "6700ac49000000001902dc67:670130e700000000240367f5",
+            "69c9f97400000000220249fd:69d65ff6000000000301261b"
+          ],
+          "sampleCount": 2,
+          "authorCount": 2,
+          "commentCount": 2,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6700ac49000000001902dc67",
+              "publishedAt": "1728131303000"
+            },
+            {
+              "url": "https://www.xiaohongshu.com/explore/69c9f97400000000220249fd",
+              "publishedAt": "1775656950000"
+            }
+          ]
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "C9高中数学候选人介绍首年底薪3000元加课时费、前半年保薪条件；年薪20万以上依赖学生数量和课量假设，不是无条件保底。其他学校课时单价不同，暂不合并评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6700ac49000000001902dc67"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6700ac49000000001902dc67",
+              "publishedAt": "1728097353000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "离职教师认为行业内相对较好但要求高、压力大；其他口碑评价偏泛，缺少足够培养与管理细节，不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "69c9f97400000000220249fd:69e47d46000000001401cc05"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/69c9f97400000000220249fd",
+              "publishedAt": "1776581958000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 1,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "纽威数控装备（苏州）股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:31:41+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "首轮命中苏州企业泛排名，未找到纽威数控具体工时。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "其他公司或高职级平均收入不归属本企业，暂无可靠工资信息。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "没有可确认属于纽威数控的员工体验，本轮不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "西北有色金属研究院",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:32:27+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "招聘和打听帖没有具体工作时间，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "本轮未获得明确工资或奖金数字。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "评论区分院本部与下属公司，但多为转述和泛评价，不能推定所有子公司不好；建议先核实具体单位和岗位职责。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a9a81c90000000028038532"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a9a81c90000000028038532",
+              "publishedAt": "1788510665000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "重庆长安汽车股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:33:00+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "软件实验室讨论涉及晚上加班和20:30后水果福利，但没有频率及第二个明确工时来源，不能确定常态作息。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "6a3bfeff0000000015027a5a"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a3bfeff0000000015027a5a",
+              "publishedAt": "1782316799000"
+            }
+          ]
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "高薪梯度图给出硕士1.6–2.2万元等范围，但非官方汇总且遭质疑，缺少目标岗位offer验证，暂不采用。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "主要为招聘咨询和泛榜，没有充分具体团队管理与成长经历，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "长江精工钢结构（集团)股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:33:00+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "加班问题未获得明确回答，本轮暂无可用工时。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "美建建筑系统施工员候选人列税前7700元、公积金7%，这是特定子公司及施工岗；海外岗位未公开金额，不推为集团统一待遇。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "67f89e3c00000000090177c3"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/67f89e3c00000000090177c3",
+              "publishedAt": "1744346684000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "劝退评论缺少具体经历，无法评价集团或技术岗位的管理与成长。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "陕西汽车控股集团有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:33:32+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "研发求助下只有累和看部门等回答，单休也只是提问，缺少明确工时。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "智驾候选人未公开报价，另一个评论称绩效占比高但无比例；不能还原固定工资及总包，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "68f35c180000000004002e18:68f4ef5e000000003902dac7"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68f35c180000000004002e18",
+              "publishedAt": "1760882527000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "候选人认可招聘流程快，但未在职；分部门、离职费用等内容仍是疑问，不能认定为制度。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "68c8d88f000000001d01faed"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68c8d88f000000001d01faed",
+              "publishedAt": "1757993103000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "无锡派克新材料科技股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:34:17+00:00",
+      "dimensions": {
+        "hours": {
+          "score": 35,
+          "confidence": "low",
+          "summary": "金相检测求助下有人称单休、加班多，另一篇讨论也有单休描述。初评35分，主要是检测/制造环境线索，不代表所有岗位。",
+          "context": "2025–2026年评论小样本，具体班组仍需核实",
+          "conflicts": "",
+          "evidenceIds": [
+            "68cce2df000000000e030169:6a3ccb43000000001501723d",
+            "68d0cfa6000000000b0135ef:68d232ac00000000020005a6"
+          ],
+          "sampleCount": 2,
+          "authorCount": 2,
+          "commentCount": 2,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68cce2df000000000e030169",
+              "publishedAt": "1782369092000"
+            },
+            {
+              "url": "https://www.xiaohongshu.com/explore/68d0cfa6000000000b0135ef",
+              "publishedAt": "1758605997000"
+            }
+          ]
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "车间工人一万多的说法未提供结构或验证，不适用于硕士检测或研发岗位；暂无可比薪资。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "有实验室环境尚可、老板尊重劳动的好评，也有氛围差的泛负评，缺少具体可核实经历，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "68d0cfa6000000000b0135ef"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68d0cfa6000000000b0135ef",
+              "publishedAt": "1758515110000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 1,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "中国能源建设集团安徽电力建设第二工程有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:35:09+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "强度大只是评论者按工程行业推测，没有项目和工时证据。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "与安徽电建一公司孰高孰低的评论互相矛盾，没有明确职位、金额或工资结构，不能评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "68d52ffe00000000130192d4"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68d52ffe00000000130192d4",
+              "publishedAt": "1758801918000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "新员工分配地点问题没有答案，泛劝退也无具体经历；应核实项目驻地、轮岗和休假安排。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "69bac47f000000001e00d862"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/69bac47f000000001e00d862",
+              "publishedAt": "1773847679000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "中车大同电力机车有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:35:43+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "一位同学转述订单多时节假日要加班，没有明确岗位、频率及独立验证。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "68ee67760000000005013dde:68ee7b22000000003300cf22"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68ee67760000000005013dde",
+              "publishedAt": "1760459555000"
+            }
+          ]
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "评论有转正到手4000、工作四年6000多及扣补贴年薪11–13万元等口径，均缺少岗位和独立凭证。不能将转述低值当硕士统一工资，也不套用未具名中车二级公司帖子。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [
+            "68ee67760000000005013dde"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "commentCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/68ee67760000000005013dde",
+              "publishedAt": "1760454518000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "样本以求职与转述待遇为主，没有足够本公司直接管理或成长经历。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "广西汽车集团有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:36:25+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "命中主要是柳州五菱泛讨论和未具名零配件厂劳务广告，未确认集团实际岗位，不能套用两班倒。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "五菱、广西汽车集团及劳务单位未明确区分，公积金和工资评论不作为本集团薪资。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "企业主体未核清，车辆产品评价亦非员工工作体验，本轮不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "浙江浙能电力股份有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:37:05+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "招聘介绍覆盖不同电厂运行、检修岗位，未披露具体轮班工时，不给统一作息。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "相关帖子只介绍福利，泛浙江国企榜的年薪范围不适用于浙能电力具体单位，暂无可靠金额。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "招聘宣传和好单位评价缺少员工实际经历，需按电厂、专业和岗位继续核实。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "海军研究院五所",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:37:05+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "首轮为海军研究院与军工院所泛讨论，没有明确五所工时。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "直招军官、文职及其他院所待遇不能混用，未找到五所目标岗位可核实金额。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "热爱工作等含糊评论不能推定加班制度，缺少具体五所在职经历，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "陕西重型汽车进出口有限公司",
+      "reviewer": "当前对话助手：正文及公开评论审阅",
+      "evaluatedAt": "2026-09-09T08:37:38+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "外派比较帖没有实际工时；国内白班只是他人推测，暂无本企业结论。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "年到手30万元的发帖者明确选择的是陕商而非陕重汽，其工资和补贴不能归给本企业。其他公司跳槽报价也已排除。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "本轮未取得可归属陕西重型汽车进出口具体岗位的在职经历，暂不评分。",
+          "context": "未知",
+          "conflicts": "",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "commentCount": 0,
+          "sources": []
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
     }
   ],
   "progress": {
@@ -8605,19 +10375,25 @@
     },
     "中国能源建设集团安徽电力建设第二工程有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:34:23+00:00",
+        "candidateCount": 11,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:34:23+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:34:23+00:00",
+        "candidateCount": 11,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:34:23+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:34:23+00:00",
+        "candidateCount": 11,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:34:23+00:00"
       }
     },
     "哈尔滨电气集团有限公司": {
@@ -9160,19 +10936,25 @@
     },
     "奇瑞汽车股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:26:07+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:26:07+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:26:07+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:26:07+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:26:07+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:26:07+00:00"
       }
     },
     "深圳欣锐科技股份有限公司": {
@@ -9320,25 +11102,25 @@
     },
     "中国第一汽车集团有限公司": {
       "experience": {
-        "state": "running",
-        "checkedAt": null,
-        "candidateCount": 0,
-        "commentState": "running",
-        "commentsCheckedAt": null
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:22:12+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:22:12+00:00"
       },
       "hours": {
-        "state": "running",
-        "checkedAt": null,
-        "candidateCount": 0,
-        "commentState": "running",
-        "commentsCheckedAt": null
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:22:12+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:22:12+00:00"
       },
       "salary": {
-        "state": "running",
-        "checkedAt": null,
-        "candidateCount": 0,
-        "commentState": "running",
-        "commentsCheckedAt": null
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:22:12+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:22:12+00:00"
       }
     },
     "杭州迪普科技股份有限公司": {
@@ -9406,19 +11188,25 @@
     },
     "千校万企联合促就业": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:24:23+00:00",
+        "candidateCount": 33,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:24:23+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:24:23+00:00",
+        "candidateCount": 33,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:24:23+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:24:23+00:00",
+        "candidateCount": 33,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:24:23+00:00"
       }
     },
     "上海芯上微装科技股份有限公司": {
@@ -9463,19 +11251,25 @@
     },
     "广西柳工机械股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:28:28+00:00",
+        "candidateCount": 39,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:28:28+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:28:28+00:00",
+        "candidateCount": 39,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:28:28+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:28:28+00:00",
+        "candidateCount": 39,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:28:28+00:00"
       }
     },
     "招商局金陵船舶（南京）有限公司": {
@@ -9697,36 +11491,48 @@
     },
     "山推工程机械股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:27:17+00:00",
+        "candidateCount": 33,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:27:17+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:27:17+00:00",
+        "candidateCount": 33,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:27:17+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:27:17+00:00",
+        "candidateCount": 33,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:27:17+00:00"
       }
     },
     "重庆长安汽车股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:32:03+00:00",
+        "candidateCount": 20,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:32:03+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:32:03+00:00",
+        "candidateCount": 20,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:32:03+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:32:03+00:00",
+        "candidateCount": 20,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:32:03+00:00"
       }
     },
     "上海格思航天科技有限公司": {
@@ -9891,19 +11697,25 @@
     },
     "国电投莱阳核能有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:24:57+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:24:57+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:24:57+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:24:57+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:24:57+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:24:57+00:00"
       }
     },
     "道恩集团有限公司": {
@@ -10085,19 +11897,25 @@
     },
     "北京汽车集团有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:22:47+00:00",
+        "candidateCount": 26,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:22:47+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:22:47+00:00",
+        "candidateCount": 26,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:22:47+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:22:47+00:00",
+        "candidateCount": 26,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:22:47+00:00"
       }
     },
     "西安图为电气技术有限公司": {
@@ -10445,36 +12263,48 @@
     },
     "山东临工工程机械有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:26:42+00:00",
+        "candidateCount": 24,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:26:42+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:26:42+00:00",
+        "candidateCount": 24,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:26:42+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:26:42+00:00",
+        "candidateCount": 24,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:26:42+00:00"
       }
     },
     "无锡派克新材料科技股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:33:48+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:33:48+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:33:48+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:33:48+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:33:48+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:33:48+00:00"
       }
     },
     "上海灿瑞科技股份有限公司": {
@@ -10536,19 +12366,25 @@
     },
     "深圳桃李未来教育集团有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:30:48+00:00",
+        "candidateCount": 38,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:30:48+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:30:48+00:00",
+        "candidateCount": 38,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:30:48+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:30:48+00:00",
+        "candidateCount": 38,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:30:48+00:00"
       }
     },
     "上海华力集成电路制造有限公司": {
@@ -10696,19 +12532,25 @@
     },
     "广西汽车集团有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:35:33+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:35:33+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:35:33+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:35:33+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:35:33+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:35:33+00:00"
       }
     },
     "上海微波技术研究所（中国电子科技集团公司第五十研究所）": {
@@ -10930,19 +12772,25 @@
     },
     "新华三技术有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:30:13+00:00",
+        "candidateCount": 25,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:30:13+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:30:13+00:00",
+        "candidateCount": 25,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:30:13+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:30:13+00:00",
+        "candidateCount": 25,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:30:13+00:00"
       }
     },
     "中国空气动力研究与发展中心": {
@@ -11038,36 +12886,48 @@
     },
     "千校": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:23:57+00:00",
+        "candidateCount": 13,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:23:57+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:23:57+00:00",
+        "candidateCount": 13,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:23:57+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:23:57+00:00",
+        "candidateCount": 13,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:23:57+00:00"
       }
     },
     "中车大同电力机车有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:34:58+00:00",
+        "candidateCount": 39,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:34:58+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:34:58+00:00",
+        "candidateCount": 39,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:34:58+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:34:58+00:00",
+        "candidateCount": 39,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:34:58+00:00"
       }
     },
     "西南电子技术研究所（中国电子科技集团公司第十研究所）": {
@@ -11175,36 +13035,48 @@
     },
     "陕西汽车控股集团有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:33:13+00:00",
+        "candidateCount": 37,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:33:13+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:33:13+00:00",
+        "candidateCount": 37,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:33:13+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:33:13+00:00",
+        "candidateCount": 37,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:33:13+00:00"
       }
     },
     "北汽福田汽车股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:23:22+00:00",
+        "candidateCount": 38,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:23:22+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:23:22+00:00",
+        "candidateCount": 38,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:23:22+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:23:22+00:00",
+        "candidateCount": 38,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:23:22+00:00"
       }
     },
     "青岛思锐智能科技股份有限公司": {
@@ -11770,19 +13642,25 @@
     },
     "徐工集团工程机械股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:29:03+00:00",
+        "candidateCount": 28,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:29:03+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:29:03+00:00",
+        "candidateCount": 28,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:29:03+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:29:03+00:00",
+        "candidateCount": 28,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:29:03+00:00"
       }
     },
     "海尔智家股份有限公司": {
@@ -11884,19 +13762,25 @@
     },
     "西北有色金属研究院": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:31:28+00:00",
+        "candidateCount": 22,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:31:28+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:31:28+00:00",
+        "candidateCount": 22,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:31:28+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:31:28+00:00",
+        "candidateCount": 22,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:31:28+00:00"
       }
     },
     "南京南瑞继保电气有限公司": {
@@ -11941,19 +13825,25 @@
     },
     "纽威数控装备（苏州）股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:31:03+00:00",
+        "candidateCount": 36,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:31:03+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:31:03+00:00",
+        "candidateCount": 36,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:31:03+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:31:03+00:00",
+        "candidateCount": 36,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:31:03+00:00"
       }
     },
     "江苏福拉特半导体设备有限公司": {
@@ -12587,19 +14477,25 @@
     },
     "长江精工钢结构（集团)股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:32:38+00:00",
+        "candidateCount": 18,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:32:38+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:32:38+00:00",
+        "candidateCount": 18,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:32:38+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:32:38+00:00",
+        "candidateCount": 18,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:32:38+00:00"
       }
     },
     "苏州伟创电气科技股份有限公司": {
@@ -12701,19 +14597,25 @@
     },
     "招商银行股份有限公司哈尔滨分行": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:29:38+00:00",
+        "candidateCount": 11,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:29:38+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:29:38+00:00",
+        "candidateCount": 11,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:29:38+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:29:38+00:00",
+        "candidateCount": 11,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:29:38+00:00"
       }
     },
     "北京平行线根源教育科技有限公司": {
@@ -13016,19 +14918,25 @@
     },
     "上海华测导航技术股份有限公司": {
       "experience": {
-        "state": "pending",
+        "state": "running",
         "checkedAt": null,
-        "candidateCount": 0
+        "candidateCount": 13,
+        "commentState": "running",
+        "commentsCheckedAt": null
       },
       "hours": {
-        "state": "pending",
+        "state": "running",
         "checkedAt": null,
-        "candidateCount": 0
+        "candidateCount": 13,
+        "commentState": "running",
+        "commentsCheckedAt": null
       },
       "salary": {
-        "state": "pending",
+        "state": "running",
         "checkedAt": null,
-        "candidateCount": 0
+        "candidateCount": 13,
+        "commentState": "running",
+        "commentsCheckedAt": null
       }
     },
     "浙江方正电机股份有限公司": {
@@ -13153,19 +15061,25 @@
     },
     "常州博瑞电力自动化设备有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:27:53+00:00",
+        "candidateCount": 32,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:27:53+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:27:53+00:00",
+        "candidateCount": 32,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:27:53+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:27:53+00:00",
+        "candidateCount": 32,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:27:53+00:00"
       }
     },
     "中国兵器集团": {
@@ -13388,53 +15302,71 @@
     },
     "大连华锐重工集团股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:25:32+00:00",
+        "candidateCount": 26,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:25:32+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:25:32+00:00",
+        "candidateCount": 26,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:25:32+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:25:32+00:00",
+        "candidateCount": 26,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:25:32+00:00"
       }
     },
     "浙江浙能电力股份有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:36:08+00:00",
+        "candidateCount": 15,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:36:08+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:36:08+00:00",
+        "candidateCount": 15,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:36:08+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:36:08+00:00",
+        "candidateCount": 15,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:36:08+00:00"
       }
     },
     "陕西重型汽车进出口有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:37:13+00:00",
+        "candidateCount": 34,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:37:13+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:37:13+00:00",
+        "candidateCount": 34,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:37:13+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:37:13+00:00",
+        "candidateCount": 34,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:37:13+00:00"
       }
     },
     "深圳市赢合科技股份有限公司": {
@@ -13462,19 +15394,25 @@
     },
     "TCL华星光电技术有限公司": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:37:48+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:37:48+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:37:48+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:37:48+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:37:48+00:00",
+        "candidateCount": 27,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:37:48+00:00"
       }
     },
     "苏州盛科通信股份有限公司": {
@@ -13519,19 +15457,25 @@
     },
     "海军研究院五所": {
       "experience": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:36:38+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:36:38+00:00"
       },
       "hours": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:36:38+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:36:38+00:00"
       },
       "salary": {
-        "state": "pending",
-        "checkedAt": null,
-        "candidateCount": 0
+        "state": "fetched",
+        "checkedAt": "2026-09-09T08:36:38+00:00",
+        "candidateCount": 31,
+        "commentState": "complete",
+        "commentsCheckedAt": "2026-09-09T08:36:38+00:00"
       }
     },
     "圣邦微电子（北京）股份有限公司": {
