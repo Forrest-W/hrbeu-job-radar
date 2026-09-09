@@ -9,7 +9,9 @@ from __future__ import annotations
 import argparse
 import hashlib
 import json
+import os
 import re
+import socket
 import time
 import urllib.error
 import urllib.parse
@@ -384,6 +386,26 @@ CURATED_SALARY_HINTS: tuple[dict[str, str], ...] = (
         "url": "https://mwenku.51job.com/shanghai_jobs/202604/qianrushiyingjian/",
     },
 )
+
+
+def enable_ipv4_only_if_requested() -> None:
+    """GitHub hosted runners may resolve the school site to an unroutable IPv6 address."""
+    if os.environ.get("HRBEU_FORCE_IPV4") != "1":
+        return
+    original_getaddrinfo = socket.getaddrinfo
+
+    def ipv4_getaddrinfo(
+        host: str | None,
+        port: str | int | None,
+        family: int = 0,
+        type: int = 0,
+        proto: int = 0,
+        flags: int = 0,
+    ) -> list[tuple[Any, ...]]:
+        return original_getaddrinfo(host, port, socket.AF_INET, type, proto, flags)
+
+    socket.getaddrinfo = ipv4_getaddrinfo
+    print("网络：已启用 IPv4 模式（GitHub Actions 兼容）", flush=True)
 
 
 def post_json(
@@ -814,6 +836,8 @@ def main() -> int:
     parser.add_argument("--output", default="index.html", help="生成的 HTML 文件名")
     parser.add_argument("--full-refresh", action="store_true", help="忽略本地缓存，强制重新处理全部记录")
     args = parser.parse_args()
+
+    enable_ipv4_only_if_requested()
 
     here = Path(__file__).resolve().parent
     cutoff = datetime.strptime(args.since, "%Y-%m-%d") if args.since else datetime.now()

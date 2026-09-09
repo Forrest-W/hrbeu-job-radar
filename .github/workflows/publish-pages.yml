@@ -20,6 +20,9 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      # 学校站点在 GitHub runner 上可能优先解析到不可用的 IPv6 路由。
+      HRBEU_FORCE_IPV4: "1"
     steps:
       - name: Check out source
         uses: actions/checkout@v6
