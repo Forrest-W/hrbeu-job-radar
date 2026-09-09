@@ -815,7 +815,7 @@ def safe_json_for_script(value: Any) -> str:
     return json.dumps(value, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
 
 
-def build_html(template_path: Path, output_path: Path, events: list[dict[str, Any]], fetched_at: datetime) -> None:
+def build_html(template_path: Path, output_path: Path, events: list[dict[str, Any]], fetched_at: datetime, school_warning: str = "") -> None:
     template = template_path.read_text(encoding="utf-8")
     # Only explicitly exported short assessments are eligible for the public site.
     report_path = template_path.parent / "reviews" / "xhs-reviewed.json"
@@ -831,11 +831,27 @@ def build_html(template_path: Path, output_path: Path, events: list[dict[str, An
         "source": BASE_URL,
         "count": len(events),
         "researchUpdatedAt": snapshot.get('generatedAt'),
+        "schoolRefreshWarning": school_warning,
         "note": "城市多为名称或总部/主要基地推断；适配分按 IC 设计验证与 AI 应用开发两条简历方向初筛，不是录用概率。",
     }
     output = template.replace("__EVENT_DATA__", safe_json_for_script(events))
     output = output.replace("__META_DATA__", safe_json_for_script(meta))
     output_path.write_text(output, encoding="utf-8")
+
+
+def rebuild_saved_page(here: Path, output_path: Path) -> None:
+    """Offline publication fallback; never relabel old school data as freshly fetched."""
+    html = (here / 'index.html').read_text(encoding='utf-8')
+    event_match = re.search(r'<script type="application/json" id="eventData">(.*?)</script>', html, re.S)
+    meta_match = re.search(r'<script type="application/json" id="metaData">(.*?)</script>', html, re.S)
+    if not event_match or not meta_match:
+        raise ValueError('已保存页面缺少活动数据或原抓取时间，拒绝发布空页面。')
+    events = json.loads(event_match[1])
+    meta = json.loads(meta_match[1])
+    if not isinstance(events, list) or not events:
+        raise ValueError('已保存活动为空，拒绝回退发布。')
+    build_html(here / 'template.html', output_path, events, datetime.fromisoformat(meta['fetchedAt']),
+               '本次学校数据刷新失败，暂用已保存活动；下方时间为原抓取时间。')
 
 
 def main() -> int:
@@ -845,11 +861,16 @@ def main() -> int:
     parser.add_argument("--delay", type=float, default=0.18, help="分页请求间隔秒数，默认 0.18")
     parser.add_argument("--output", default="index.html", help="生成的 HTML 文件名")
     parser.add_argument("--full-refresh", action="store_true", help="忽略本地缓存，强制重新处理全部记录")
+    parser.add_argument("--from-snapshot", action="store_true", help="离线重建已保存活动，保留原时间并标注刷新失败")
     args = parser.parse_args()
 
+    here = Path(__file__).resolve().parent
+    if args.from_snapshot:
+        rebuild_saved_page(here, (here / args.output).resolve())
+        print('已用保存的活动重建页面；未声称学校数据已刷新。')
+        return 0
     enable_ipv4_only_if_requested()
 
-    here = Path(__file__).resolve().parent
     cutoff = datetime.strptime(args.since, "%Y-%m-%d") if args.since else datetime.now()
     raw: list[dict[str, Any]] = []
     try:

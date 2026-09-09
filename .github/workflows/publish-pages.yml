@@ -33,7 +33,21 @@ jobs:
           python-version: "3.11"
 
       - name: Fetch public events and build the page
+        id: school_fetch
+        continue-on-error: true
         run: python -X utf8 scrape_hrbeu.py --delay 0.35
+
+      - name: Publish UI changes with saved events when school is unavailable
+        if: steps.school_fetch.outcome == 'failure' && github.event_name == 'push'
+        run: |
+          echo "::warning::School refresh failed. Publishing saved events with original timestamp and a visible warning."
+          python -X utf8 scrape_hrbeu.py --from-snapshot
+
+      - name: Keep existing website when scheduled refresh fails
+        if: steps.school_fetch.outcome == 'failure' && github.event_name != 'push'
+        run: |
+          echo "::error::School refresh failed; keeping the existing public website unchanged."
+          exit 1
 
       - name: Prepare Pages artifact
         run: |

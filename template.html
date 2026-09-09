@@ -737,7 +737,7 @@
 
     populateFilters(); syncProfileForm(); updateStats(); render();
     if (window.location.hash === '#profile') setProfileDrawer(true);
-    $('#dataTime').textContent = `更新于 ${new Date(META.fetchedAt).toLocaleString('zh-CN', {hour12:false})}`;
+    $('#dataTime').textContent = `${META.schoolRefreshWarning ? META.schoolRefreshWarning + ' ' : ''}学校数据更新于 ${new Date(META.fetchedAt).toLocaleString('zh-CN', {hour12:false})}`;
     $('#sourceNote').textContent = META.note;
   </script>
 </body>
