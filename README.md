@@ -4,6 +4,8 @@
 
 ## 使用
 
+小红书企业作息/薪资/体验调研：双击 `open-xhs-research.bat`，粘贴搜索请求cURL后点“导入并继续查询”。每次更换登录信息会保留进度。详细规则与评分入口见 [小红书调研说明](XHS_RESEARCH.md)。此入口只在本机处理登录信息。
+
 手动更新：双击 `refresh.bat`，脚本会执行增量同步并打开 `index.html`。页面中的“增量更新”按钮会打开同一套手动入口说明。
 
 自动更新：运行一次 `schedule_daily_update.ps1`，会注册 Windows 任务“HRBEU Job Radar - Daily Incremental Update”，每天 02:15（本机时间）执行 `update-latest.bat`。更新日志写入 `logs/latest-update.log`。

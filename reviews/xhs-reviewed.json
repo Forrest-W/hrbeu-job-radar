@@ -1,0 +1,134 @@
+{
+  "generatedAt": "2026-09-09T05:03:53+00:00",
+  "reports": [
+    {
+      "company": "中国航发控制系统研究所",
+      "reviewer": "当前对话助手：阅读首批小红书正文后评估",
+      "evaluatedAt": "2026-09-09T05:03:47+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "首批有一条询问无锡614所待遇与强度的帖子，但无可读正文答案；其余文字样本没有确认所属公司，暂不能确定上下班时间、双休和加班频率。",
+          "context": "无锡614所线索；岗位、部门、实际作息未知；未读取图片或评论",
+          "conflicts": "未确认公司身份的国央企体验帖未纳入评分。",
+          "evidenceIds": [
+            "6a5a3b83000000000f028332"
+          ],
+          "sampleCount": 1,
+          "authorCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a5a3b83000000000f028332",
+              "publishedAt": "1784298371000"
+            }
+          ]
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "首批文字中没有可归属于该所、同时明确岗位和薪酬口径的待遇数字；求助标题本身不构成薪资证据。",
+          "context": "薪资金额、总包构成、学历与届别未知",
+          "conflicts": "广泛研究所排名和求职建议未直接给出该所待遇，不用于估算。",
+          "evidenceIds": [
+            "6a5a3b83000000000f028332"
+          ],
+          "sampleCount": 1,
+          "authorCount": 0,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a5a3b83000000000f028332",
+              "publishedAt": "1784298371000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "有一篇直接介绍614所业务方向的笔记，但内容属于机构介绍，没有员工日常、培养或管理体验；缺少独立的第一手工作体验。",
+          "context": "机构业务介绍；员工身份与任职部门未知",
+          "conflicts": "上海研究所泛谈不作为无锡614所的评价。",
+          "evidenceIds": [
+            "6a6850c7000000001101dab7"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/6a6850c7000000001101dab7",
+              "publishedAt": "1785292213000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    },
+    {
+      "company": "中国航空工业集团公司雷华电子技术研究所",
+      "reviewer": "当前对话助手：阅读首批小红书正文后评估",
+      "evaluatedAt": "2026-09-09T05:03:51+00:00",
+      "dimensions": {
+        "hours": {
+          "score": null,
+          "confidence": "low",
+          "summary": "首批作息搜索结果没有包含可确认属于该所的作息答案。芯片行业体验帖没有给出公司名称，不能套用到该所。",
+          "context": "部门、岗位、上下班和加班制度未知；图片与评论未读取",
+          "conflicts": "行业泛谈和培训类排名已排除。",
+          "evidenceIds": [],
+          "sampleCount": 0,
+          "authorCount": 0,
+          "sources": []
+        },
+        "salary": {
+          "score": null,
+          "confidence": "low",
+          "summary": "一篇标注雷华/607所的2024年offer求助帖提及无锡民机结构研发口头offer“总包24.7”，原文未明确单位及完整薪资构成；作者后续说明未入职。仅作为历史口头offer线索，不能代表2027届或IC/AI岗位待遇。",
+          "context": "2024年秋招帖子，2025年更新；无锡607所民机结构研发；口头offer，作者未入职",
+          "conflicts": "其他高薪跳槽帖子没有确认公司身份，未纳入；当前缺少第二个可比来源。",
+          "evidenceIds": [
+            "671a2278000000001602235c"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/671a2278000000001602235c",
+              "publishedAt": "1729766008000"
+            }
+          ]
+        },
+        "experience": {
+          "score": null,
+          "confidence": "low",
+          "summary": "相关offer帖是在询问真实待遇和强度，作者后来未入职，不能当在职体验。其余文字材料不能确认具体雇主，暂不评价管理氛围和成长。",
+          "context": "无锡607所求助帖；缺少已入职员工的可归属工作体验",
+          "conflicts": "无明确公司名称的负面感受和其他研究所排名已排除。",
+          "evidenceIds": [
+            "671a2278000000001602235c"
+          ],
+          "sampleCount": 1,
+          "authorCount": 1,
+          "sources": [
+            {
+              "url": "https://www.xiaohongshu.com/explore/671a2278000000001602235c",
+              "publishedAt": "1729766008000"
+            }
+          ]
+        }
+      },
+      "overallScore": null,
+      "coverage": 0,
+      "weights": {
+        "hours": 0.4,
+        "salary": 0.35,
+        "experience": 0.25
+      }
+    }
+  ]
+}

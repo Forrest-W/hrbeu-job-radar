@@ -3,3 +3,10 @@ __pycache__/
 logs/
 data/
 _site/
+.private/
+.venv-xhs/
+*cookie*
+*.curl
+curl-*.txt
+.env
+.env.*

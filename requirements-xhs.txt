@@ -1,0 +1,2 @@
+# Optional, local-only transport; school scraping and Pages do not need this.
+xhshow==0.2.0

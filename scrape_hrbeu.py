@@ -817,6 +817,12 @@ def safe_json_for_script(value: Any) -> str:
 
 def build_html(template_path: Path, output_path: Path, events: list[dict[str, Any]], fetched_at: datetime) -> None:
     template = template_path.read_text(encoding="utf-8")
+    # Only explicitly exported short assessments are eligible for the public site.
+    report_path = template_path.parent / "reviews" / "xhs-reviewed.json"
+    reports = json.loads(report_path.read_text(encoding="utf-8")).get("reports", []) if report_path.exists() else []
+    by_company = {report["company"]: report for report in reports}
+    events = [{**{k: v for k, v in event.items() if k != "xhsResearch"},
+               "xhsResearch": by_company.get(event.get("company"))} for event in events]
     meta = {
         "fetchedAt": fetched_at.astimezone().isoformat(timespec="seconds"),
         "source": BASE_URL,

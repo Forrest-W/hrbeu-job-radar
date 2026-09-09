@@ -386,6 +386,7 @@
       </div>
       <div class="detail-grid" id="detailGrid"></div>
       <div class="review-box"><h3>企业口碑初筛</h3><p id="detailReview"></p><p><b>面试前核实：</b><span id="detailVerify"></span></p></div>
+      <section id="xhsReview" class="review-box" aria-label="小红书作息薪资评价"></section>
       <div><b>为什么得到这个适配分</b><ul class="reason-list" id="detailReasons"></ul></div>
       <p class="hint">提示：薪资优先来自学校公开信息；“网络查询得到”是公开岗位样本，可能与本场活动的岗位、城市或学历要求不同，务必打开来源核验。口碑文字是行业/组织类型的保守归纳，不是匿名网站评分。</p>
       <div class="dialog-actions" id="detailActions"></div>
@@ -576,6 +577,15 @@
         ['企业 / 组织', event.company], ['时间', fmtFull(event.start)], ['地点', event.place], ['城市', `${event.city}（${event.cityBasis}）`], ['薪资', `${event.salary || '未公开'}（${event.salaryBasis || '待核验'}）`], ['行业线索', event.domain], ['双方向适配', `IC 设计验证 ${personal.scores.ic.score} · AI 应用开发 ${personal.scores.ai.score}`], ['学校站浏览', `${event.views} 次`]
       ].map(([k,v]) => `<div class="detail-item"><span>${esc(k)}</span><b>${esc(v)}</b></div>`).join('');
       $('#detailReview').textContent = event.reputation;
+      const research = event.xhsResearch;
+      if (!research) {
+        $('#xhsReview').innerHTML = '<h3>小红书企业评价 · 待调研</h3><p>作息、薪资和工作体验还没有经审核的帖子依据，暂不评分。</p>';
+      } else {
+        const labels = {hours: '作息', salary: '薪资', experience: '工作体验'};
+        $('#xhsReview').innerHTML = `<h3>小红书评价分：${research.overallScore == null ? '证据不足' : esc(research.overallScore) + ' / 100'}</h3><p>证据覆盖 ${esc(research.coverage)} / 3；该分值独立于岗位适配分。</p>` +
+          Object.entries(research.dimensions).map(([key, value]) => `<h4>${esc(labels[key] || key)} · ${value.score == null ? '暂不评分' : esc(value.score)}</h4><p>${esc(value.summary || '缺少依据')}</p><p>${esc(value.context)} · ${esc(value.sampleCount)} 篇样本 · 置信度 ${esc(({low:'低',medium:'中',high:'高'})[value.confidence] || '未知')}</p>${value.conflicts ? `<p>分歧：${esc(value.conflicts)}</p>` : ''}<p>${(value.sources || []).filter(s => /^https:\/\/www\.xiaohongshu\.com\/explore\/[0-9a-f]{24}$/i.test(s.url)).map((s, i) => `<a href="${esc(s.url)}" target="_blank" rel="noreferrer">帖子依据 ${i + 1} ↗</a>`).join(' · ')}</p>`).join('') +
+          `<p>评估时间：${esc(research.evaluatedAt)}。匿名帖子仅代表样本体验，具体部门、城市和岗位需另行核实。</p>`;
+      }
       $('#detailVerify').textContent = event.verify;
       $('#detailReasons').innerHTML = personal.reasons.map(r => `<li>${esc(r)}</li>`).join('');
       $('#detailActions').innerHTML = `<a class="btn btn-dark" href="${esc(event.sourceUrl)}" target="_blank" rel="noreferrer">学校详情 ↗</a>${event.salarySourceUrl ? `<a class="btn btn-sm" href="${esc(event.salarySourceUrl)}" target="_blank" rel="noreferrer">${event.salaryBasis === '学校公开信息' ? '学校薪资来源' : '网络薪资查询'} ↗</a>` : ''}${event.citySourceUrl ? `<a class="btn btn-sm" href="${esc(event.citySourceUrl)}" target="_blank" rel="noreferrer">城市网络来源 ↗</a>` : ''}${Object.entries(event.reviewLinks).map(([name,url]) => `<a class="btn btn-sm" href="${esc(url)}" target="_blank" rel="noreferrer">${esc(name)} ↗</a>`).join('')}<button class="btn btn-sm" id="icsBtn">加入日历</button>`;
