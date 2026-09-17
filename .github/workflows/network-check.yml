@@ -1,0 +1,23 @@
+name: Diagnose school connectivity (no deployment)
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['diagnose_network.py', '.github/workflows/network-check.yml']
+permissions:
+  contents: read
+jobs:
+  connectivity:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.11'
+      - name: Test DNS TCP TLS and public list APIs
+        run: python -u -X utf8 diagnose_network.py

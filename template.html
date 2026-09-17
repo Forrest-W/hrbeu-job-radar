@@ -166,6 +166,16 @@
     .search-icon { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 16px; }
     .subtoolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 13px 2px 16px; }
     .quick-filters, .view-actions { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .date-range { display: flex; flex-wrap: wrap; align-items: end; gap: 10px; margin: 0 2px 16px; }
+    .date-range label { display: grid; gap: 6px; flex: 1 1 150px; max-width: 230px; font-size: 12px; font-weight: 700; }
+    .date-range input { min-width: 0; width: 100%; }
+    .date-range .hint { flex-basis: 100%; margin: 0; }
+    #dateError { color: var(--red); }
+    @media(max-width:540px) {
+      .date-range { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); }
+      .date-range label { max-width: none; }
+      .date-range .hint { grid-column: 1 / -1; }
+    }
     .chip {
       border: 1px solid var(--line);
       background: transparent;
@@ -383,6 +393,13 @@
           </div>
           <div class="view-actions"><select id="sortSelect" aria-label="排序"><option value="time">按时间</option><option value="fit">按适配度</option><option value="reviews">按小红书评价分</option><option value="views">按热度</option></select><button class="btn btn-sm" id="resetBtn">重置筛选</button></div>
         </div>
+        <div class="date-range" role="group" aria-label="自定义活动日期范围">
+          <label for="dateFrom">开始日期<input id="dateFrom" type="date" aria-describedby="dateHint dateError"></label>
+          <label for="dateTo">结束日期<input id="dateTo" type="date" aria-describedby="dateHint dateError"></label>
+          <button type="button" class="btn btn-sm" id="clearDatesBtn">清空日期</button>
+          <p id="dateHint" class="hint">按活动日期（北京时间）筛选，包含起止两天；查看某一天时，两端选择同一天。当前数据仅含抓取时未开始的活动。</p>
+          <p id="dateError" class="hint" role="status" aria-live="polite" hidden></p>
+        </div>
         <section class="research-overview" aria-label="小红书调研进度">
           <strong id="researchCount">小红书企业调研</strong>
           <p id="researchInfo"></p>
@@ -530,6 +547,8 @@
         }).join('') + `</div><footer>${review ? '短摘要来自帖子审阅；查看判断可见岗位背景、置信度和原帖来源。' : '候选帖子需要核验企业、岗位和年份，尚不代表企业结论。'}</footer></section>`;
     }
     function getFiltered() {
+      const from = $('#dateFrom').value, to = $('#dateTo').value;
+      if (from && to && from > to) return [];
       const query = $('#searchInput').value.trim().toLowerCase();
       const cities = selectedValues('cityFilter');
       const types = selectedValues('typeFilter');
@@ -543,6 +562,9 @@
         if (types.size && !types.has(event.type)) return false;
         if (domains.size && !domains.has(event.domain)) return false;
         if (event.personalFit.score < minFit) return false;
+        const activityDate = String(event.start).slice(0, 10);
+        if (from && activityDate < from) return false;
+        if (to && activityDate > to) return false;
         if (state.days !== 'all' && (dayDiff(event) < 0 || dayDiff(event) > Number(state.days))) return false;
         if (state.favoriteOnly && !favorites.has(event.id)) return false;
         if (reviewFilter === 'scored' && event.xhsResearch?.overallScore == null) return false;
@@ -677,6 +699,7 @@
       $('#saveProfileBtn').textContent = '已保存 ✓'; setTimeout(() => $('#saveProfileBtn').textContent = '保存画像并重排', 1200);
     }
     function resetFilters() {
+      clearDateRange();
       $('#searchInput').value = ''; $('#reviewFilter').value = 'all'; $$('.multi-select input[type="checkbox"]').forEach(input => input.checked = false); $$('.multi-select').forEach(updateMultiLabel); $('#sortSelect').value = 'time'; $('#minFit').value = 0; $('#minFitValue').textContent = '不限';
       state.days = 'all'; state.favoriteOnly = false; state.shown = 30;
       $$('.chip[data-days]').forEach(c => c.classList.toggle('active', c.dataset.days === 'all')); $('#favoriteOnly').classList.remove('active'); render();
@@ -686,7 +709,25 @@
       const detail = event.target.closest('[data-detail]'); if (detail) showDetail(detail.dataset.detail);
       const favorite = event.target.closest('[data-favorite]'); if (favorite) { const id = favorite.dataset.favorite; favorites.has(id) ? favorites.delete(id) : favorites.add(id); store.write('hrbeu-radar-favorites', [...favorites]); render(); }
     });
-    $$('.chip[data-days]').forEach(chip => chip.addEventListener('click', () => { state.days = chip.dataset.days; state.shown = 30; $$('.chip[data-days]').forEach(c => c.classList.toggle('active', c === chip)); render(); }));
+    function clearDateRange() {
+      $('#dateFrom').value = ''; $('#dateTo').value = '';
+      $('#dateTo').setCustomValidity(''); $('#dateError').hidden = true;
+      $('#dateTo').removeAttribute('aria-invalid');
+    }
+    function changeDateRange() {
+      const from = $('#dateFrom').value, to = $('#dateTo').value;
+      const invalid = Boolean(from && to && from > to);
+      $('#dateTo').setCustomValidity(invalid ? '结束日期不能早于开始日期' : '');
+      $('#dateTo').setAttribute('aria-invalid', String(invalid));
+      $('#dateError').hidden = !invalid;
+      $('#dateError').textContent = invalid ? '结束日期不能早于开始日期，请调整日期范围。' : '';
+      state.days = 'all'; state.shown = 30;
+      $$('.chip[data-days]').forEach(c => c.classList.toggle('active', !from && !to && c.dataset.days === 'all'));
+      render();
+    }
+    ['dateFrom','dateTo'].forEach(id => $('#' + id).addEventListener('change', changeDateRange));
+    $('#clearDatesBtn').addEventListener('click', () => { clearDateRange(); changeDateRange(); });
+    $$('.chip[data-days]').forEach(chip => chip.addEventListener('click', () => { clearDateRange(); state.days = chip.dataset.days; state.shown = 30; $$('.chip[data-days]').forEach(c => c.classList.toggle('active', c === chip)); render(); }));
     $('#favoriteOnly').addEventListener('click', e => { state.favoriteOnly = !state.favoriteOnly; e.currentTarget.classList.toggle('active', state.favoriteOnly); render(); });
     ['searchInput','cityFilter','typeFilter','domainFilter','sortSelect','reviewFilter'].forEach(id => $('#' + id).addEventListener(id === 'searchInput' ? 'input' : 'change', event => { if (event.currentTarget.classList?.contains('multi-select')) updateMultiLabel(event.currentTarget); state.shown = 30; render(); }));
     $$('.multi-trigger').forEach(trigger => trigger.addEventListener('click', event => {
