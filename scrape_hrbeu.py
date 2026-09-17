@@ -17,13 +17,14 @@ import urllib.error
 import urllib.parse
 import urllib.request
 from dataclasses import dataclass
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any, Iterable
 
 
 BASE_URL = "https://job.hrbeu.edu.cn"
 DEFAULT_TIMEOUT = 30
+SCHOOL_TIMEZONE = timezone(timedelta(hours=8))
 USER_AGENT = (
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
     "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140 Safari/537.36 "
@@ -854,6 +855,16 @@ def rebuild_saved_page(here: Path, output_path: Path) -> None:
                '本次学校数据刷新失败，暂用已保存活动；下方时间为原抓取时间。')
 
 
+def school_cutoff(since: str | None = None, instant: datetime | None = None) -> datetime:
+    """School timestamps are naive China time, regardless of the runner timezone."""
+    if since:
+        return datetime.strptime(since, "%Y-%m-%d")
+    reference = instant or datetime.now(timezone.utc)
+    if reference.tzinfo is None:
+        raise ValueError('instant must have a timezone')
+    return reference.astimezone(SCHOOL_TIMEZONE).replace(tzinfo=None)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="抓取哈工程就业网招聘活动并生成可筛选 HTML")
     parser.add_argument("--include-past", action="store_true", help="同时保留已经结束的活动")
@@ -871,7 +882,7 @@ def main() -> int:
         return 0
     enable_ipv4_only_if_requested()
 
-    cutoff = datetime.strptime(args.since, "%Y-%m-%d") if args.since else datetime.now()
+    cutoff = school_cutoff(args.since)
     raw: list[dict[str, Any]] = []
     try:
         for source in SOURCES:

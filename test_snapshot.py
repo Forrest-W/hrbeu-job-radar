@@ -2,10 +2,18 @@ import json
 import tempfile
 import unittest
 from pathlib import Path
-from scrape_hrbeu import rebuild_saved_page
+from scrape_hrbeu import rebuild_saved_page, school_cutoff
+from datetime import datetime, timezone
 
 
 class SnapshotTests(unittest.TestCase):
+    def test_cutoff_is_china_time_even_on_utc_runner(self):
+        instant = datetime(2026, 9, 17, 4, 0, tzinfo=timezone.utc)
+        self.assertEqual(school_cutoff(instant=instant), datetime(2026, 9, 17, 12, 0))
+        self.assertEqual(school_cutoff('2026-09-16', instant), datetime(2026, 9, 16))
+        midnight = datetime(2026, 9, 17, 17, 0, tzinfo=timezone.utc)
+        self.assertEqual(school_cutoff(instant=midnight), datetime(2026, 9, 18, 1, 0))
+
     def test_keeps_source_time_and_merges_review(self):
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
